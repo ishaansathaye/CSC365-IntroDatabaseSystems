@@ -6,3 +6,4 @@
 
 - [Lecture 1 - What is a database?](./prof-notes/1-What-is-a-database.pdf)
 - [Lecture 2 - Databases and DBMS in a nutshell](./prof-notes/2-Databases-DBMS.pdf)
+- [Lecture 3 - Relational Model](./prof-notes/3-RelationalDataModel.pdf)
