@@ -56,7 +56,7 @@
 \section*{Introduction}
 Definition of a database and DBMS in Professor Notes.
 
-
+\newpage
 \hfill \break
 \framebox{
     \vbox{\vspace{2mm}
@@ -83,7 +83,11 @@ Definition of a database and DBMS in Professor Notes.
         \end{itemize}
     \end{itemize}
     \item Relational Database $\longrightarrow$ \textbf{Collection of Relations tables}
-    \item Table Instance
+    \item \textbf{Table Instance}: set of records with instantiated values of the attributes
+    \begin{itemize}
+        \item Finite
+        \item Records, rows, tuples
+    \end{itemize}
 \end{itemize}
 
 One unit of data is called a \textbf{datum}.
@@ -100,9 +104,12 @@ Object, entity, event: description of one object, entity, event
     Limitations of table instances
 \end{definition}
 \begin{itemize}
-    \item Candidate Key: set or lists of attributes that uniquely
+    \item \textbf{Candidate Key}: set or lists of attributes that uniquely
     define a record in a table, \textbf{minimal such set of attributes},
     made up of multiple attributes sometimes.
+    \begin{itemize}
+        \item \textbf{Every attribute is necessary.}
+    \end{itemize}
 \end{itemize}
 
 \section*{Examples}
@@ -150,5 +157,26 @@ make a \textbf{network model}.
 \begin{verbatim}
     Department(Name, College, Building, Room): Department would also have a table as well.
 \end{verbatim}
+
+\newpage
+\hfill \break 
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 3:  RDM Cont. and SQL DDL and DML \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{Relational Data Model}
+
+What makes a record unique?
+\begin{itemize}
+    \item \textbf{Superkey}: any set of attributes that uniquely defines a record in a table
+    \item \textbf{Primary Key}: candidate key chosen by you
+\end{itemize}
 
 \end{document}
