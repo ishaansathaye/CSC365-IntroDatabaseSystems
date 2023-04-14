@@ -9,6 +9,7 @@
 - [Lecture 2 - Databases and DBMS in a nutshell](./prof-notes/2-Databases-DBMS.pdf)
 - [Lecture 3 - Relational Model](./prof-notes/3-RelationalDataModel.pdf)
 - [Lecture 4 - SQL DDL and DML](./prof-notes/4-SQLDDLDML.pdf)
+- [Lecture 5 - LabThreeSixFive and MySQL Client](./prof-notes/5-LabThreeSixFiveMySQL.pdf)
 
 ## Labs
 

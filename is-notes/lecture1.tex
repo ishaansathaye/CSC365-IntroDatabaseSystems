@@ -209,6 +209,13 @@ MySQL Database
 
 \section*{Data Definition Language (DDL)}
 
+\textbf{Commands from DDL act upon the schema}
+\begin{itemize}
+    \item CREATE TABLE
+    \item DROP TABLE
+    \item ALTER TABLE
+\end{itemize}
+
 \subsection*{Define a Relational Table}
 Aspects needed to define a table:
 \begin{itemize}
@@ -242,7 +249,7 @@ Aspects needed to define a table:
         \item \textbf{Floating Point Types}
         \begin{itemize}
             \item \textbf{FLOAT}
-            \item \textbf{DOUBLE}
+            \item \textbf{DOUBLE(P, D)}
             \item \textbf{DECIMAL}
         \end{itemize}
     \end{itemize}
@@ -250,8 +257,8 @@ Aspects needed to define a table:
     \begin{itemize}
         \item \textbf{Character Types}
         \begin{itemize}
-            \item \textbf{CHAR} $\longrightarrow$ \textbf{Fixed Length}
-            \item \textbf{VARCHAR} $\longrightarrow$ \textbf{Variable Length}
+            \item \textbf{CHAR(N)} $\longrightarrow$ \textbf{Fixed Length}
+            \item \textbf{VARCHAR(N)} $\longrightarrow$ \textbf{Variable Length}
             \item TINYTEXT
             \item \textbf{TEXT} $\longrightarrow$ for storing large amounts of text
             \item MEDIUMTEXT
@@ -271,7 +278,35 @@ Aspects needed to define a table:
     \end{itemize}
 \end{itemize}
 
+\subsection*{Case Sensitivity}
+\subsubsection*{Case Sensitive}
+\begin{itemize}
+    \item Table Names
+    \item Database Names
+\end{itemize}
+\subsubsection*{Not Case Sensitive}
+\begin{itemize}
+    \item Attribute Names
+    \item SQL Keywords
+\end{itemize}
+
 \section*{Data Manipulation Language (DML)}
+
+\textbf{Commands from DML act upon the instance.}
+\begin{itemize}
+    \item INSERT
+    \item DELETE
+    \item UPDATE
+\end{itemize}
+
+\subsection*{Inserting Data}
+\begin{verbatim}
+    INSERT INTO <table_name>(<attribute_name>, ...)
+        VALUES (<value>, ...);
+\end{verbatim}
+Supply values in order of attribute declarations in CREATE TABLE statement.
+Can omit the attribute names if values supplied are in the same order. If need to omit
+a value then omit that attribute name as well.
 
 \section*{More on Constraints}
 
@@ -284,5 +319,40 @@ MySQL Server
     \item mysql connectivity from Python
 \end{itemize}
 
+Lab 2 uses Create Table, Drop Table, and Insert.
+
+\section*{Code from Lab}
+\begin{verbatim}
+show tables
+
+CREATE TABLE Departments (
+    
+    DeptId INT PRIMARY KEY, 
+    Abbr VARCHAR(20) UNIQUE, -- UNIQUE makes candidate key
+    Name VARCHAR(128) UNIQUE,
+    College CHAR(10),
+    Building INT,
+    Room CHAR(6),
+    -- set multiple candidate keys at the bottom
+    UNIQUE(Building, Room),
+    -- foreign key always a separate line statement:
+    -- FOREIGN KEY(College) REFERENCES colleges(abbr)
+    
+);
+
+describe colleges;
+SELECT * FROM colleges;
+
+show CREATE TABLE colleges;
+
+show CREATE TABLE Departments;
+
+INSERT INTO Departments 
+    VALUES(1, 'CSSE', 'Computer Science and Software Engineering', 'CENG', 14, '245');
+    
+INSERT INTO Departments(DeptId, Abbr, Name, College, Building, Room)
+    VALUES(1, 'CSSE', 'Computer Science and Software Engineering', 'CENG', 14, '245');
+
+\end{verbatim}
 
 \end{document}
