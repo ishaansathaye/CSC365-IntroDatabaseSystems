@@ -15,6 +15,7 @@
 \usepackage{amsmath,amsfonts,graphicx}
 \usepackage{algorithm,caption}
 \usepackage[noend]{algpseudocode}
+\usepackage{url}
 %
 % the following macro is used to generate the header.
 %
@@ -207,34 +208,19 @@ MySQL Database
     \item Set of Permissions
 \end{itemize}
 
-\section*{Data Definition Language (DDL)}
-
-\textbf{Commands from DDL act upon the schema}
+\section*{Case Sensitivity}
+\subsection*{Case Sensitive}
 \begin{itemize}
-    \item CREATE TABLE
-    \item DROP TABLE
-    \item ALTER TABLE
+    \item Table Names
+    \item Database Names
+\end{itemize}
+\subsection*{Not Case Sensitive}
+\begin{itemize}
+    \item Attribute Names
+    \item SQL Keywords
 \end{itemize}
 
-\subsection*{Define a Relational Table}
-Aspects needed to define a table:
-\begin{itemize}
-    \item Table Name
-    \item Attributes: Name + Type
-    \item Constraints
-\end{itemize}
-
-\begin{verbatim}
-    CREATE TABLE <table_name> (
-        <attribute_name> <sql_type> [<single_line_constraints>],
-        ...,
-        <attribute_name> <sql_type> [<single_line_constraints>] [,
-        <constraints>[,
-        <constraints>]
-    ]);
-\end{verbatim}
-
-\subsection*{Types}
+\section*{Types}
 \begin{itemize}
     \item \textbf{Numeric Types}
     \begin{itemize}
@@ -278,17 +264,32 @@ Aspects needed to define a table:
     \end{itemize}
 \end{itemize}
 
-\subsection*{Case Sensitivity}
-\subsubsection*{Case Sensitive}
+\section*{Data Definition Language (DDL)}
+
+\textbf{Commands from DDL act upon the schema}
 \begin{itemize}
-    \item Table Names
-    \item Database Names
+    \item CREATE TABLE
+    \item DROP TABLE
+    \item ALTER TABLE
 \end{itemize}
-\subsubsection*{Not Case Sensitive}
+
+\subsection*{Define a Relational Table}
+Aspects needed to define a table:
 \begin{itemize}
-    \item Attribute Names
-    \item SQL Keywords
+    \item Table Name
+    \item Attributes: Name + Type
+    \item Constraints
 \end{itemize}
+
+\begin{verbatim}
+    CREATE TABLE <table_name> (
+        <attribute_name> <sql_type> [<single_line_constraints>],
+        ...,
+        <attribute_name> <sql_type> [<single_line_constraints>] [,
+        <constraints>[,
+        <constraints>]
+    ]);
+\end{verbatim}
 
 \section*{Data Manipulation Language (DML)}
 
@@ -309,6 +310,15 @@ Can omit the attribute names if values supplied are in the same order. If need t
 a value then omit that attribute name as well.
 
 \section*{More on Constraints}
+\begin{itemize}
+    \item \textbf{[NOT] NULL} - attribute cannot be null
+    \item \textbf{UNIQUE}
+    \item \textbf{PRIMARY KEY}
+    \item \textbf{FOREIGN KEY}
+    \item \textbf{DEFAULT $<$exp$>$} - default value for attribute
+    \item \textbf{AUTO\textunderscore INCREMENT} - means that the attribute is an integer 
+    and is automatically incremented
+\end{itemize}
 
 \section*{Lab 2}
 MySQL Server
@@ -354,5 +364,66 @@ INSERT INTO Departments(DeptId, Abbr, Name, College, Building, Room)
     VALUES(1, 'CSSE', 'Computer Science and Software Engineering', 'CENG', 14, '245');
 
 \end{verbatim}
+
+\newpage
+\hfill \break 
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 5: DDL and DML Continued \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    }
+}
+
+\section*{DML}
+\subsection*{Updating Data}
+\begin{verbatim}
+    UPDATE <table_name>
+        SET <attribute_name> = <value>
+        WHERE <condition>;
+\end{verbatim}
+
+\subsubsection*{Example}
+\begin{verbatim}
+    UPDATE colleges
+        SET abbr = 'COSAM'
+        WHERE abbr = 'COASM'
+\end{verbatim}
+
+WHERE clause is a filter that determines which rows are updated.
+
+\subsection*{Deleting Data}
+\begin{verbatim}
+    DELETE FROM <table_name>
+        WHERE <condition>;
+\end{verbatim}
+
+\section*{DDL}
+\subsection*{Altering Tables}
+\begin{verbatim}
+    ALTER TABLE <table_name>
+        <Command> <parameters>;
+\end{verbatim}
+\subsubsection*{Commands}
+\begin{itemize}
+    \item ADD - add a column/attribute/key
+    \item DROP
+    \item MODIFY
+    \item RENAME
+\end{itemize}
+\subsubsection*{Parameters}
+\begin{itemize}
+    \item COLUMN
+    \item CONSTRAINT
+    \item FOREIGN KEY
+    \item PRIMARY KEY
+    \item UNIQUE
+\end{itemize}
+
+Adding an attribute, dropping/adding a constraint, renaming a table, disable/enabling
+keys, and modifying attributes examples are in this professor notes: \url{4-SQLDDLDML.pdf}
 
 \end{document}
