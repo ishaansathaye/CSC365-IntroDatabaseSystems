@@ -2,6 +2,7 @@ CREATE TABLE Appellations (
     Id int PRIMARY KEY,
     Appellation varchar(50) UNIQUE,
     County varchar(16),
+    State varchar(16),
     Area varchar(24),
     isAVA char(3)
 );
@@ -22,7 +23,6 @@ CREATE TABLE Wine (
     Price int,
     Score int,
     Cases int DEFAULT NULL,
-    DrAdvice varchar(50), -- convert years to varchar when inserting
     UNIQUE(Winery, Appellation, Name),
     FOREIGN KEY (Grape) REFERENCES Grapes(Grape),
     FOREIGN KEY (Appellation) REFERENCES Appellations(Appellation)
