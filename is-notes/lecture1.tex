@@ -397,7 +397,7 @@ WHERE clause is a filter that determines which rows are updated.
 
 \subsection*{Deleting Data}
 \begin{verbatim}
-    DELETE FROM <table_name>
+    DELETE FROM <table_name> -- just this is a valid command to delete all rows
         WHERE <condition>;
 \end{verbatim}
 
@@ -433,10 +433,69 @@ keys, and modifying attributes examples are in this professor notes: \url{4-SQLD
     \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
     \hfill Spring 2023} }
     \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 5: DDL and DML Continued \hfill} }
+    \hbox to 6.28in { {\Large \hfill Lecture 6: DML/DDL Cont., WHERE Clause., and MySQL Conn. \hfill} }
     \vspace{2mm}
     \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
     }
 }
+
+\section*{Announcements}
+\subsection*{Running Scripts for Lab 2}
+Can run from command line using mysql command or using mysql client. For running using
+mysql command need to specify the database if not using default database.
+\begin{verbatim}
+    source script.sql
+\end{verbatim}
+
+\section*{DML/DDL}
+
+\textbf{Data Manipulation works on instance and Data Definition works on schema.}
+
+\subsection*{Altering a Table}
+Modifying the schema. ALTER examples in class.
+
+For CREATE TABLE, you can name constraints: 
+\begin{verbatim}
+    CREATE TABLE Example (
+        Id int PRIMARY KEY,
+        X INT,
+        Y INT,
+        CONSTRAINT Point UNIQUE (X, Y)
+    );
+\end{verbatim}
+
+\subsection*{Updating and Deleting from Table: WHERE Clause}
+
+Ex. Deleting in Table
+\begin{verbatim}
+    DELETE FROM test02
+        WHERE b > c
+\end{verbatim}
+This deletes rows where b is greater than c.
+
+Ex. Deleting with Scope
+\begin{verbatim}
+    DELETE FROM test02
+        FOR EACH ROW in test01
+        DO 
+            DELETE FROM test02 -- delete(row, condition)
+            WHERE b > c
+\end{verbatim}
+
+\subsubsection*{SQL Boolean Expressions}
+\begin{itemize}
+    \item 0, 1
+    \item Builtin: IN(...) $\longrightarrow$ returns bool
+    \item $<Expression>$ $<op1>$ $<op2>$ // can also use IN or LIKE
+    \item $<Expression>$ AND $<Expression>$
+    \item $<Expression>$ OR $<Expression>$
+    \item NOT $<Expression>$
+\end{itemize}
+
+
+\section*{MySQL Connectivity}
+Breifly went over the Python examples on Course webpage that connect to 
+MySQL server.
+
 
 \end{document}
