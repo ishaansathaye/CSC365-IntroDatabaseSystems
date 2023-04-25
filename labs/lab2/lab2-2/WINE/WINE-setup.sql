@@ -26,7 +26,6 @@ CREATE TABLE Wine (
     Price int,
     Score int,
     Cases int DEFAULT NULL,
-    UNIQUE(Winery, Appellation, Name),
     FOREIGN KEY (Grape) REFERENCES Grapes(Grape),
     FOREIGN KEY (Appellation) REFERENCES Appellations(Appellation)
 );

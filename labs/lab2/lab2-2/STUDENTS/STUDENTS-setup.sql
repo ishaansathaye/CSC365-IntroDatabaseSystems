@@ -2,9 +2,9 @@
 -- Cal Poly Email: isathaye@calpoly.edu
 
 CREATE TABLE Teachers (
-    Classroom int PRIMARY KEY,
     LastName varchar(16),
-    FirstName varchar(16)
+    FirstName varchar(16),
+    Classroom int PRIMARY KEY
 );
 
 CREATE TABLE List (

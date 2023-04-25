@@ -11,15 +11,16 @@ CREATE TABLE Campuses (
 );
 
 CREATE TABLE Fees (
-    CampusId int PRIMARY KEY,
+    CampusId int,
     Year int,
     CampusFee int,
+    PRIMARY KEY(CampusId, Year),
     FOREIGN KEY (CampusId) REFERENCES Campuses(Id)
 );
 
 CREATE TABLE Degrees (
-    CampusId int,
     Year int,
+    CampusId int,
     Degrees int,
     PRIMARY KEY(Year, CampusId),
     FOREIGN KEY (CampusId) REFERENCES Campuses(Id)

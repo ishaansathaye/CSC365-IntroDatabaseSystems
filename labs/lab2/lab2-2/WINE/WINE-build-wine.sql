@@ -308,7 +308,7 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (153,'Pinot Noir','Siduri','Sonoma County','Pinot Noir',2009,20,88,2657.0);
 INSERT INTO Wine
-	VALUES (154,'Pinot Noir','Castle Rock','Carneros','Pinot Noir',2008,14,84);
+	VALUES (154,'Pinot Noir','Castle Rock','Carneros','Pinot Noir',2008,14,84, null);
 INSERT INTO Wine
 	VALUES (155,'Syrah','Sine Qua Non','Sta. Rita Hills','A Shot in the Dark Eleven Confessions Vineyard',2006,200,98,442.0);
 INSERT INTO Wine
@@ -374,9 +374,9 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (186,'Syrah','Zaca Mesa','Santa Ynez Valley','Syrah',2007,24,87,7651.0);
 INSERT INTO Wine
-	VALUES (187,'Syrah','Domaine de la Terre Rouge','California','Les Cotes De L''Ouest',2008,18,84);
+	VALUES (187,'Syrah','Domaine de la Terre Rouge','California','Les Cotes De L''Ouest',2008,18,84, null);
 INSERT INTO Wine
-	VALUES (188,'Syrah','Fetzer','California','Shiraz',2008,9,83);
+	VALUES (188,'Syrah','Fetzer','California','Shiraz',2008,9,83, null);
 INSERT INTO Wine
 	VALUES (189,'Zinfandel','Carlisle','Russian River Valley','Carlisle Vineyard',2008,43,93,325.0);
 INSERT INTO Wine
@@ -642,7 +642,7 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (320,'Chardonnay','Laird Family','Carneros','Gold Creek Ranch',2007,30,90,1500.0);
 INSERT INTO Wine
-	VALUES (321,'Chardonnay','Mer Soleil','Santa Lucia Highlands','Chardonnay',2006,42,90);
+	VALUES (321,'Chardonnay','Mer Soleil','Santa Lucia Highlands','Chardonnay',2006,42,90, null);
 INSERT INTO Wine
 	VALUES (322,'Chardonnay','Nicholson Ranch','Sonoma Valley','Cuvee Natalie',2006,48,90,325.0);
 INSERT INTO Wine
@@ -772,21 +772,21 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (385,'Zinfandel','Rodney Strong','Sonoma County','Knotty Vines',2007,20,86,18655.0);
 INSERT INTO Wine
-	VALUES (386,'Zinfandel','Cardinal Zin','Calaveras County','Beastly Old Vines',2006,20,84);
+	VALUES (386,'Zinfandel','Cardinal Zin','Calaveras County','Beastly Old Vines',2006,20,84, null);
 INSERT INTO Wine
-	VALUES (387,'Zinfandel','Cline','California','Ancient Vines',2007,15,84);
+	VALUES (387,'Zinfandel','Cline','California','Ancient Vines',2007,15,84, null);
 INSERT INTO Wine
-	VALUES (388,'Zinfandel','Peachy Canyon','Paso Robles','Incredible Red',2007,12,82);
+	VALUES (388,'Zinfandel','Peachy Canyon','Paso Robles','Incredible Red',2007,12,82, null);
 INSERT INTO Wine
-	VALUES (389,'Zinfandel','Renwood','Sierra Foothills','Zinfandel',2006,10,82);
+	VALUES (389,'Zinfandel','Renwood','Sierra Foothills','Zinfandel',2006,10,82, null);
 INSERT INTO Wine
-	VALUES (390,'Zinfandel','Renwood','Fiddletown','Zinfandel',2006,25,78);
+	VALUES (390,'Zinfandel','Renwood','Fiddletown','Zinfandel',2006,25,78, null);
 INSERT INTO Wine
 	VALUES (391,'Cabernet Franc','Pride','Sonoma County','Cabernet Franc',2006,60,92,1128.0);
 INSERT INTO Wine
 	VALUES (392,'Zinfandel','D-Cubed Cellars','Napa Valley','Primitivo',2006,25,88,226.0);
 INSERT INTO Wine
-	VALUES (393,'Merlot','Thomas Henry','Napa Valley','Merlot',2005,12,84);
+	VALUES (393,'Merlot','Thomas Henry','Napa Valley','Merlot',2005,12,84, null);
 INSERT INTO Wine
 	VALUES (394,'Cabernet Sauvingnon','Caymus','Napa Valley','Special Selection',2008,130,94,15618.0);
 INSERT INTO Wine
@@ -822,9 +822,9 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (410,'Zinfandel','Kokomo','Sonoma County','Zinfandel',2008,22,88,800.0);
 INSERT INTO Wine
-	VALUES (411,'Merlot','Black Box','California','Merlot',2008,25,83);
+	VALUES (411,'Merlot','Black Box','California','Merlot',2008,25,83, null);
 INSERT INTO Wine
-	VALUES (412,'Zinfandel','Joel Gott','California','Zinfandel',2008,17,83);
+	VALUES (412,'Zinfandel','Joel Gott','California','Zinfandel',2008,17,83, null);
 INSERT INTO Wine
 	VALUES (413,'Cabernet Sauvingnon','Paul Hobbs','St. Helena','Beckstoffer Dr. Crane Vineyard',2007,150,97,586.0);
 INSERT INTO Wine
@@ -872,7 +872,7 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (435,'Cabernet Sauvingnon','Merryvale','Napa Valley','Cabernet Sauvignon',2006,55,86,2284.0);
 INSERT INTO Wine
-	VALUES (436,'Cabernet Sauvingnon','Cycles Gladiator','California','Cabernet Sauvignon',2007,10,80);
+	VALUES (436,'Cabernet Sauvingnon','Cycles Gladiator','California','Cabernet Sauvignon',2007,10,80, null);
 INSERT INTO Wine
 	VALUES (437,'Grenache','Sine Qua Non','California','To the Rescue',2007,100,93,164.0);
 INSERT INTO Wine
@@ -1000,4 +1000,4 @@ INSERT INTO Wine
 INSERT INTO Wine
 	VALUES (499,'Zinfandel','C.G. Di Arle','Shenandoah Valley','Primitivo Block #4',2007,25,86,719.0);
 INSERT INTO Wine
-	VALUES (500,'Chardonnay','Acacia','California','A by Acacia',2008,11,81);
+	VALUES (500,'Chardonnay','Acacia','California','A by Acacia',2008,11,81, null);
