@@ -24,27 +24,27 @@
 
 -- -- CARS
 -- set echo on
-source CARS/CARS-setup.sql
--- set echo off
-source CARS/CARS-build-continents.sql
-source CARS/CARS-build-countries.sql
-source CARS/CARS-build-car-makers.sql
-source CARS/CARS-build-model-list.sql
-source CARS/CARS-build-car-names.sql
-source CARS/CARS-build-cars-data.sql
+-- source CARS/CARS-setup.sql
+-- -- set echo off
+-- source CARS/CARS-build-continents.sql
+-- source CARS/CARS-build-countries.sql
+-- source CARS/CARS-build-car-makers.sql
+-- source CARS/CARS-build-model-list.sql
+-- source CARS/CARS-build-car-names.sql
+-- source CARS/CARS-build-cars-data.sql
 
 
 -- -- CSU
 -- -- set echo on
--- source CSU/CSU-setup.sql
--- -- set echo off
--- source CSU/CSU-build-Campuses.sql
--- source CSU/CSU-build-disciplines.sql
--- source CSU/CSU-build-degrees.sql
--- source CSU/CSU-build-discipline-enrollments.sql
--- source CSU/CSU-build-enrollments.sql
--- source CSU/CSU-build-faculty.sql
--- source CSU/CSU-build-csu-fees.sql
+source CSU/CSU-setup.sql
+-- set echo off
+source CSU/CSU-build-Campuses.sql
+source CSU/CSU-build-disciplines.sql
+source CSU/CSU-build-degrees.sql
+source CSU/CSU-build-discipline-enrollments.sql
+source CSU/CSU-build-enrollments.sql
+source CSU/CSU-build-faculty.sql
+source CSU/CSU-build-csu-fees.sql
 
 -- -- INN
 -- -- set echo on
