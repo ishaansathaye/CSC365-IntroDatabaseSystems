@@ -14,24 +14,24 @@
 
 -- BAKERY
 -- set echo on
-source BAKERY/BAKERY-setup.sql
--- set echo off
-source BAKERY/BAKERY-build-goods.sql
-source BAKERY/BAKERY-build-customers.sql
-source BAKERY/BAKERY-build-receipts.sql
-source BAKERY/BAKERY-build-items.sql
+-- source BAKERY/BAKERY-setup.sql
+-- -- set echo off
+-- source BAKERY/BAKERY-build-goods.sql
+-- source BAKERY/BAKERY-build-customers.sql
+-- source BAKERY/BAKERY-build-receipts.sql
+-- source BAKERY/BAKERY-build-items.sql
 
 
 -- -- CARS
--- -- set echo on
--- source CARS/CARS-setup.sql
--- -- set echo off
--- source CARS/CARS-build-continents.sql
--- source CARS/CARS-build-countries.sql
--- source CARS/CARS-build-car-makers.sql
--- source CARS/CARS-build-model-list.sql
--- source CARS/CARS-build-car-names.sql
--- source CARS/CARS-build-cars-data.sql
+set echo on
+source CARS/CARS-setup.sql
+-- set echo off
+source CARS/CARS-build-continents.sql
+source CARS/CARS-build-countries.sql
+source CARS/CARS-build-car-makers.sql
+source CARS/CARS-build-model-list.sql
+source CARS/CARS-build-car-names.sql
+source CARS/CARS-build-cars-data.sql
 
 
 -- -- CSU
