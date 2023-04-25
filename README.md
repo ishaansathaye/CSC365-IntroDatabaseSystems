@@ -11,6 +11,7 @@
 - [Lecture 4 - SQL DDL and DML](./prof-notes/4-SQLDDLDML.pdf)
     - SQL Examples on Altering Tables and Deleting Data
 - [Lecture 5 - LabThreeSixFive and MySQL Client](./prof-notes/5-LabThreeSixFiveMySQL.pdf)
+- [Lecture 6 - SQL Date Type Conversions](./prof-notes/6-SQLDateType.pdf)
 
 ## Labs
 
