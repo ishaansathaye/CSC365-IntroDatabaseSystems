@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 DROP TABLE Vocals;
 
 DROP TABLE Tracklists;

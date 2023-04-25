@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Continents (
     Id int PRIMARY KEY,
     Name char(15) UNIQUE

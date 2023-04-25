@@ -1,26 +1,27 @@
-CREATE TABLE Airlines (
-    Id int PRIMARY KEY,
-    AirlineName varchar(30) UNIQUE,
-    Abbr varchar(15) UNIQUE,
-    Country varchar(30)
-);
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
 
-CREATE TABLE Airports (
-    Code char(3) PRIMARY KEY,
-    AirportName varchar(60),
-    City varchar(50),
-    Country varchar(30),
-    CAbbr varchar(15),
-    UNIQUE(AirportName, City)
-);
-
-CREATE TABLE Flights (
-    Airline int,
-    FlightNo int,
-    Source char(3),
-    Destination char(3),
-    PRIMARY KEY(Airline, FlightNo),
-    FOREIGN KEY(Airline) REFERENCES Airlines(Id),
-    FOREIGN KEY(Source) REFERENCES Airports(Code),
-    FOREIGN KEY(Destination) REFERENCES Airports(Code)
-);
+INSERT INTO Airlines
+	VALUES (1,'United Airlines','UAL','USA');
+INSERT INTO Airlines
+	VALUES (2,'US Airways','USAir','USA');
+INSERT INTO Airlines
+	VALUES (3,'Delta Airlines','Delta','USA');
+INSERT INTO Airlines
+	VALUES (4,'Southwest Airlines','Southwest','USA');
+INSERT INTO Airlines
+	VALUES (5,'American Airlines','American','USA');
+INSERT INTO Airlines
+	VALUES (6,'Northwest Airlines','Northwest','USA');
+INSERT INTO Airlines
+	VALUES (7,'Continental Airlines','Continental','USA');
+INSERT INTO Airlines
+	VALUES (8,'JetBlue Airways','JetBlue','USA');
+INSERT INTO Airlines
+	VALUES (9,'Frontier Airlines','Frontier','USA');
+INSERT INTO Airlines
+	VALUES (10,'AirTran Airways','AirTran','USA');
+INSERT INTO Airlines
+	VALUES (11,'Allegiant Air','Allegiant','USA');
+INSERT INTO Airlines
+	VALUES (12,'Virgin America','Virgin','USA');

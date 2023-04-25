@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Airlines (
     Id int PRIMARY KEY,
     AirlineName varchar(30) UNIQUE,
@@ -6,8 +9,8 @@ CREATE TABLE Airlines (
 );
 
 CREATE TABLE Airports (
-    Code char(3) PRIMARY KEY,
     AirportName varchar(60),
+    Code char(3) PRIMARY KEY,
     City varchar(50),
     Country varchar(30),
     CAbbr varchar(15),

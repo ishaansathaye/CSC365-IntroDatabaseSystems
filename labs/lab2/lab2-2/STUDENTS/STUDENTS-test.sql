@@ -15,3 +15,9 @@ CREATE TABLE List (
     PRIMARY KEY (FirstName, LastName),
     FOREIGN KEY (Classroom) REFERENCES Teachers(Classroom)
 );
+
+SELECT * FROM Teachers;
+SELECT COUNT(*) FROM Teachers;
+
+SELECT * FROM List;
+SELECT COUNT(*) FROM List;

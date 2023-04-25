@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Appellations (
     Id int PRIMARY KEY,
     Appellation varchar(50) UNIQUE,
@@ -27,3 +30,7 @@ CREATE TABLE Wine (
     FOREIGN KEY (Grape) REFERENCES Grapes(Grape),
     FOREIGN KEY (Appellation) REFERENCES Appellations(Appellation)
 );
+
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+

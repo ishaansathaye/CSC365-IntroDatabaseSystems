@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Customers (
     Id int PRIMARY KEY,
     LastName char(20),

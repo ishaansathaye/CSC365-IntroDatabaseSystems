@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Marathon (
     Place int PRIMARY KEY,
     RunTime time,

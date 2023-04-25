@@ -1,13 +1,11 @@
-DROP TABLE Vocals;
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
 
-DROP TABLE Tracklists;
-
-DROP TABLE Performance;
-
-DROP TABLE Instruments;
-
-DROP TABLE Songs;
-
-DROP TABLE Band;
-
-DROP TABLE Albums;
+INSERT INTO Band
+	VALUES (1,'Solveig','Heilo');
+INSERT INTO Band
+	VALUES (2,'Marianne','Sveen');
+INSERT INTO Band
+	VALUES (3,'Anne-Marit','Bergheim');
+INSERT INTO Band
+	VALUES (4,'Turid','Jorgensen');

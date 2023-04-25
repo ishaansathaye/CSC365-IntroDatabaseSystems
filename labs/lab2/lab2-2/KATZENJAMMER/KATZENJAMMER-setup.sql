@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Albums (
     Id int PRIMARY KEY,
     Title varchar(128) UNIQUE,

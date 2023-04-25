@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Campuses (
     Id int PRIMARY KEY,
     Campus varchar(60) UNIQUE, 

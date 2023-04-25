@@ -1,3 +1,6 @@
+-- Name: Ishaan Sathaye
+-- Cal Poly Email: isathaye@calpoly.edu
+
 CREATE TABLE Rooms (
     RoomId char(5) PRIMARY KEY,
     RoomName varchar(30) UNIQUE,
