@@ -497,5 +497,84 @@ Ex. Deleting with Scope
 Breifly went over the Python examples on Course webpage that connect to 
 MySQL server.
 
+\newpage
+\hfill \break 
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 7: Python Connectivity and Relational Algebra \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    }
+}
+
+\section*{Python MySQL Connectivity}
+Relational Database is sitting on a server. It is listening
+for connections, and our program is a client that connects
+to the server via the port. Essentially, there is a pipe and a
+exchange of messages that is happening. Generates a connection object
+that stores info about how to properly access the database.
+
+\subsection*{Package}
+\begin{verbatim}
+    import mysql.connector
+\end{verbatim}
+
+\subsection*{Connection}
+5 Things Needed: Host, Port, Username, Password, Database (sometimes not necessarily)
+
+These get passed to mysql.connector.connect() function. This returns a connection object.
+is\textunderscore connected() returns a cursor object.
+
+Cursor object that is returned from the connection object. Cursor object is 
+used to execute queries.
+
+
+\section*{Relational Algebra}
+Relational $\longrightarrow$ Database Model $\longrightarrow$ Relational Model.
+Algebra: set of elements \& operations on elements
+
+Relational Algebra is operations on relational tables.
+
+Boolean Algebra introduces operations on truth values
+\begin{itemize}
+    \item T, F
+    \item \textasciitilde, $\wedge$, $\vee$, $\rightarrow$, $\leftrightarrow$
+\end{itemize}
+
+\subsection*{Notation}
+Upper case letters like R, S, T, $R_1$, $S_7$, ... are relational table names.
+Letters from first half of alphabet like A, B, C, ... are attributes names.
+R($A_1$,..., $A_n$) are to represent schema. t, s, r $\in$ R are tuples. $a_1$, $a_2$, ...
+are values. Ex. t = ($a_1$,..., $a_n$) and it could be referred to as t.$A_1$ = $a_1$.
+
+\subsection*{Operations}
+\subsubsection*{Binary}
+\subsubsection*{Unary}
+\begin{itemize}
+    \item Selection $\sigma$ - filter rows
+    \item Projection $\pi$ - filter columns
+\end{itemize}
+
+\subsection*{Selection Operation}
+\begin{itemize}
+    \item $\sigma_{<selection condition>}(R)$ - returns rows that satisfy condition
+    \item Selection Condition denoted by $C$
+    \item Ex. C = $A_2 = 'Riley' \wedge A_3 = 'Hicks'$
+    \item \textbf{Formal Notation:} $\sigma_C(R)$ = $\{t \in R | t  satisfies C\}$
+\end{itemize}
+
+\subsection*{Projection Operation}
+\begin{itemize}
+    \item $\pi_{<attribute list>}(R)$ - returns columns that are in attribute list
+    \item $F$ is the projection list which is a list of attributes
+    \item Ex. F = $(B_1,..., B_m)$ where $B_i$ $\in$ $A_1,..., A_n$
+    \item \textbf{Formal Notation:} $\pi_F(R)$ = $\{t' | \exists,  t \in R, s.t. 
+    \forall B \in F, t'.B=t.B\}$
+    \item \textbf{Projection squeezes out duplicates}
+\end{itemize}
+
 
 \end{document}
