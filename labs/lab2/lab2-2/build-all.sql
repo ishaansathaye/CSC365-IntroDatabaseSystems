@@ -23,7 +23,7 @@
 
 
 -- -- CARS
-set echo on
+-- set echo on
 source CARS/CARS-setup.sql
 -- set echo off
 source CARS/CARS-build-continents.sql
