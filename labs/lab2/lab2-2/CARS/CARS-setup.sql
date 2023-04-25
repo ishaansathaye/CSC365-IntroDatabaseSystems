@@ -31,7 +31,7 @@ CREATE TABLE Models (
 CREATE TABLE Makes (
     Id int PRIMARY KEY,
     Model char(15),
-    Make char(60) UNIQUE,
+    Make char(60),
     FOREIGN KEY (Model) REFERENCES Models(Model)
 );
 
