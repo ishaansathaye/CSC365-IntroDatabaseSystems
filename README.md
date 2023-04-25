@@ -19,5 +19,5 @@
     - [Project Description](./labs/lab1/lab1-1.pdf)
 - [Lab 1-2](./labs/lab1/Lab1-2.ipynb)
     - [Project Description](./labs/lab1/lab1-2.pdf)
-- [Lab 2-1]()
+- [Lab 2]()
     - [Project Description](./labs/lab2/lab2.pdf)

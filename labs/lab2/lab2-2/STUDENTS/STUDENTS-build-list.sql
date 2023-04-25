@@ -1,0 +1,3 @@
+DROP TABLE List;
+
+DROP TABLE Teachers;
