@@ -83,8 +83,10 @@ Definition of a database and DBMS in Professor Notes.
             \item Schema: List of attribute name + attribute type pairs
         \end{itemize}
     \end{itemize}
-    \item Relational Database $\longrightarrow$ \textbf{Collection of Relations tables}
-    \item \textbf{Table Instance}: set of records with instantiated values of the attributes
+    \item Relational Database $\longrightarrow$ \textbf{Collection of Relations 
+    tables}
+    \item \textbf{Table Instance}: set of records with instantiated values of 
+    the attributes
     \begin{itemize}
         \item Finite
         \item Records, rows, tuples
@@ -176,7 +178,8 @@ make a \textbf{network model}.
 
 What makes a record unique?
 \begin{itemize}
-    \item \textbf{Superkey}: any set of attributes that uniquely defines a record in a table
+    \item \textbf{Superkey}: any set of attributes that uniquely defines a 
+    record in a table
     \item \textbf{Primary Key}: candidate key chosen by you
 \end{itemize}
 
@@ -246,7 +249,8 @@ MySQL Database
             \item \textbf{CHAR(N)} $\longrightarrow$ \textbf{Fixed Length}
             \item \textbf{VARCHAR(N)} $\longrightarrow$ \textbf{Variable Length}
             \item TINYTEXT
-            \item \textbf{TEXT} $\longrightarrow$ for storing large amounts of text
+            \item \textbf{TEXT} $\longrightarrow$ for storing large amounts of 
+            text
             \item MEDIUMTEXT
             \item LONGTEXT
         \end{itemize}
@@ -306,7 +310,8 @@ Aspects needed to define a table:
         VALUES (<value>, ...);
 \end{verbatim}
 Supply values in order of attribute declarations in CREATE TABLE statement.
-Can omit the attribute names if values supplied are in the same order. If need to omit
+Can omit the attribute names if values supplied are in the same order. If need 
+to omit
 a value then omit that attribute name as well.
 
 \section*{More on Constraints}
@@ -316,8 +321,8 @@ a value then omit that attribute name as well.
     \item \textbf{PRIMARY KEY}
     \item \textbf{FOREIGN KEY}
     \item \textbf{DEFAULT $<$exp$>$} - default value for attribute
-    \item \textbf{AUTO\textunderscore INCREMENT} - means that the attribute is an integer 
-    and is automatically incremented
+    \item \textbf{AUTO\textunderscore INCREMENT} - means that the attribute is 
+    an integer and is automatically incremented
 \end{itemize}
 
 \section*{Lab 2}
@@ -433,7 +438,8 @@ keys, and modifying attributes examples are in this professor notes: \url{4-SQLD
     \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
     \hfill Spring 2023} }
     \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 6: DML/DDL Cont., WHERE Clause., and MySQL Conn. \hfill} }
+    \hbox to 6.28in { {\Large \hfill Lecture 6: DML/DDL Cont., WHERE Clause., 
+    and MySQL Conn. \hfill} }
     \vspace{2mm}
     \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
     }
@@ -441,7 +447,8 @@ keys, and modifying attributes examples are in this professor notes: \url{4-SQLD
 
 \section*{Announcements}
 \subsection*{Running Scripts for Lab 2}
-Can run from command line using mysql command or using mysql client. For running using
+Can run from command line using mysql command or using mysql client. For 
+running using
 mysql command need to specify the database if not using default database.
 \begin{verbatim}
     source script.sql
@@ -504,7 +511,8 @@ MySQL server.
     \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
     \hfill Spring 2023} }
     \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 7: Python Connectivity and Relational Algebra \hfill} }
+    \hbox to 6.28in { {\Large \hfill Lecture 7: Python Connectivity and 
+    Relational Algebra \hfill} }
     \vspace{2mm}
     \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
     }
@@ -523,9 +531,11 @@ that stores info about how to properly access the database.
 \end{verbatim}
 
 \subsection*{Connection}
-5 Things Needed: Host, Port, Username, Password, Database (sometimes not necessarily)
+5 Things Needed: Host, Port, Username, Password, Database (sometimes not 
+necessarily)
 
-These get passed to mysql.connector.connect() function. This returns a connection object.
+These get passed to mysql.connector.connect() function. This returns a 
+connection object.
 is\textunderscore connected() returns a cursor object.
 
 Cursor object that is returned from the connection object. Cursor object is 
@@ -576,5 +586,145 @@ are values. Ex. t = ($a_1$,..., $a_n$) and it could be referred to as t.$A_1$ = 
     \item \textbf{Projection squeezes out duplicates}
 \end{itemize}
 
+\newpage
+\hfill \break 
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 8: Relational Algebra \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    }
+}
+
+\section*{Relational Algebra}
+R, S,  T are relational tables and these are sets. Set Operations include
+Union, Intersection, Difference, Symmetric Difference...
+
+Example:
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \caption{R}
+      \centering
+        \begin{tabular}{c|c|c}
+            A & B & C \\
+            \hline
+            1 & 2 & a \\
+            2 & 4 & b \\
+            3 & 1 & d \\
+            4 & 4 & d \\
+            4 & 5 & a \\
+        \end{tabular}
+    \end{minipage}
+    \begin{minipage}{.25\linewidth}
+      \centering
+        \caption{S}
+        \begin{tabular}{c|c|c}
+            B & D & E \\
+            \hline
+            2 & a & 1 \\
+            3 & a & 2 \\
+            7 & b & 3 \\
+            5 & b & 1 \\
+            1 & c & 2 \\
+        \end{tabular}
+    \end{minipage} 
+\end{table}
+
+\subsection*{Selection Review}
+Duplicate Elimination: $\sigma_{A=4 \vee B=4}(R)$
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{c|c|c}
+        A & B & C \\
+        \hline
+        2 & 4 & b \\
+        4 & 4 & d \\
+        4 & 5 & a \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Projection Review}
+$\bullet$ Subset and Columns: $\pi_{B,D}(R)$. The schema here is $R(B,D)$.
+
+$\bullet$ Can make composition of operations: $\pi_{B,E}(\sigma_{D=b}(R))$ because 
+an result of an operation is a relational table. Result:
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{c|c}
+        B & E \\
+        \hline
+        7 & 3 \\
+        5 & 1 \\
+    \end{tabular}
+\end{table}
+
+$\bullet$ Can also reorder columns: $\pi_{EBD}(R)$
+
+$\bullet$ Duplicate Columns: $\pi_{ABA}(R)$. Issue with this is that there are 2
+columns with the same name. Disambiguate by renaming: $\pi_{A_1BA_2}(R)$
+
+$\bullet$ Can also introduce new columns: $\pi_{A,B,2\cdot A}(R)$
+
+\subsection*{Cartesian Product}
+$\bullet$ $R \times S$ is the cartesian product of R and S. Result is a table 
+with all possible combinations of rows from R and S. 
+
+$\bullet$ Notation: $R \times S$ = $\{(t,t`) | t \in R, t \in S\}$
+
+Ex. $\sigma_{A<3}(R) \times \sigma_{B<3}(S)$
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+        A & B & C & B & D & E \\
+        \hline
+        1 & 2 & a & 2 & a & 1 \\
+        1 & 2 & a & 3 & a & 2 \\
+        1 & 2 & a & 5 & b & 1 \\
+        2 & 4 & b & 2 & a & 1 \\
+        2 & 4 & b & 3 & a & 2 \\
+        2 & 4 & b & 5 & b & 1 \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Join}
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \caption{R}
+      \centering
+        \begin{tabular}{c|c|c}
+            Id & Customer & C \\
+            \hline
+            1 & 2 & a \\
+            2 & 4 & b \\
+            3 & 1 & d \\
+            4 & 4 & d \\
+            4 & 5 & a \\
+        \end{tabular}
+    \end{minipage}
+    \begin{minipage}{.25\linewidth}
+      \centering
+        \caption{S}
+        \begin{tabular}{c|c|c}
+            Id & Name & E \\
+            \hline
+            2 & a & 1 \\
+            3 & a & 2 \\
+            7 & b & 3 \\
+            5 & b & 1 \\
+            1 & c & 2 \\
+        \end{tabular}
+    \end{minipage} 
+\end{table}
+
+$\bullet$ Who purchased Receipt 3 $\longrightarrow$ Find a person with Id 1: $
+\pi_{Name}(\pi_{R.Cust=S.Id}(\sigma_{Id=3}(R))\times S)$
+
+$\bullet$ Notation: $R \bowtie_{C} S = \sigma_{R.x operation S.Y}(R \times S)$
 
 \end{document}
