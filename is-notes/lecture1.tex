@@ -727,4 +727,145 @@ $\bullet$ Who purchased Receipt 3 $\longrightarrow$ Find a person with Id 1: $
 
 $\bullet$ Notation: $R \bowtie_{C} S = \sigma_{R.x operation S.Y}(R \times S)$
 
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 9:  Joins \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{Announcements}
+$\bullet$ Double-sided cheat sheet allowed for Midterm.
+$\bullet$ Homework assigned on Thursday as prep for Midterm.
+
+\section*{Example}
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \caption{T}
+      \centering
+        \begin{tabular}{c|c|c|c}
+            Id & Name & Course & Grade \\
+            \hline
+            1 & Joe & CSC 365 & A \\
+            2 & Mary & CSC 365 & A \\
+            3 & Lisa & CSC 101 & B \\
+            4 & Luis & STAT 301 & C \\
+            5 & Steve & STAT 301 & A \\
+            1 & Joe & CSC 357 & B \\
+            2 & Mary & CSC 357 & C \\
+        \end{tabular}
+    \end{minipage}
+    \begin{minipage}{.25\linewidth}
+      \centering
+        \caption{C}
+        \begin{tabular}{c|c}
+            CourseId & Instructor \\
+            \hline
+            CSC 357 & Nico \\
+            CSC 365 & Migler \\
+            STAT 301 & Bodwin \\
+            CSC 101 & Rivera \\
+            STAT 302 & Frame \\
+        \end{tabular}
+    \end{minipage} 
+\end{table}
+
+Transcript Table T has primary key $(Id, Course)$ and foreign key $(Course)$ 
+referencing Course Table C.
+
+$\bullet$ \textbf{Find all Joe's instructors.}
+\begin{gather*}
+    \sigma_{Name=Joe}(T) \\
+    \pi_{Course}(\sigma_{Name=Joe}(T)) \\
+    C \times \pi_{Course}(\sigma_{Name=Joe}(T)) \\
+    \sigma_{C.CourseNo=T.Course}(C \times \pi_{Course}(\sigma_{Name=Joe}(T))) \\
+    \pi_{Instructor}(\sigma_{C.CourseNo=T.Course}(C 
+    \times \pi_{Course}(\sigma_{Name=Joe}(T)))) \\
+\end{gather*}
+
+Cartesian Product in line 3 makes table with Course No., Instructor, and Course
+combination for Joe. So it would be every combination with Course and CourseNo.:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        C.CourseNo & C.Instructor & T.Course \\
+        \hline
+        CSC 357 & Nico & CSC 365 \\
+        CSC 365 & Migler & CSC 365 \\
+        ... & ... & ... \\
+        CSC 357 & Nico & CSC 357 \\
+        CSC 365 & Migler & CSC 357 \\
+        ... & ... & ... \\
+    \end{tabular}
+\end{table}
+
+In Line 4, we are selecting the rows where the CourseNo. in C is equal to the
+Courses in T. 
+
+$\bullet$ \textbf{For each course grade, report the instructor who assigned it.}
+\begin{gather*}
+    \pi_{T.Course, T.Grade, C.Instructor}(\sigma_{T.Course=C.CourseId}(T 
+    \times C))
+\end{gather*}
+First, we are taking the Cartesian product which gives us 35 rows. Then we are
+making the table smaller by only selecting the rows that are equal in Courses.
+
+\section*{$\Theta-$Join}
+\begin{gather*}
+    R \bowtie_{\Theta} S = \sigma_{\Theta}(R \times S) \\
+\end{gather*}
+\begin{center}
+    $\Theta$ - selection condition where each comparison uses attributes from 
+    R and S
+\end{center}
+
+\section*{Equi-Join}
+\begin{gather*}
+    R \bowtie_{\Theta} S \\
+\end{gather*}
+\begin{center}
+    $\Theta$ = (R.A = S.B) $\wedge$ (R.C = S.D) $\wedge$ (R.E = S.F) \\
+\end{center}
+
+\section*{Natural Join}
+\begin{center}
+    $R(A_1,...A_k, B_1,...B_k)$ \\
+    $S(B_1,...B_k, C_1,...C_k)$ \\
+\end{center}
+\begin{gather*}
+    R \bowtie S = \pi_{R.*, S.C_1,...S.C_k}(R \bowtie_{Condition} S)
+\end{gather*}
+\begin{center}
+    Condition is where $R.B_1$ = $S.B_1$ $\wedge$ ... $\wedge$ $R.B_k$ = $S.B_k$.
+\end{center}
+Natural join looks at all \textbf{common attributes} of two relations and joins on
+them, removing one set of common attributes from the final relation.
+
+\section*{Semi-Join}
+Special case of natural join where only attributes of one relation are kept.
+Essentially, it is a projection on all elements of 1 relation.
+
+Left Semi Join:
+\begin{gather*}
+    R \bowtie_{\Theta} S = \pi_{R.*}(R \bowtie_{\Theta} S) \\
+\end{gather*}
+
+Right Semi Join:
+\begin{gather*}
+    R \bowtie_{\Theta} S = \pi_{S.*}(R \bowtie_{\Theta} S) \\
+\end{gather*}
+
+Example:
+\begin{gather*}
+    (\sigma_{Name=Joe}(R) \bowtie C) \\
+\end{gather*}
+
+
 \end{document}
