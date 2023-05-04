@@ -13,5 +13,6 @@ CREATE TABLE Marathon (
     FirstName varchar(20),
     LastName varchar(20),
     Town varchar(20),
-    State char(2)
+    State char(2),
+    UNIQUE(GroupPlace, AgeGroup, Sex)
 );

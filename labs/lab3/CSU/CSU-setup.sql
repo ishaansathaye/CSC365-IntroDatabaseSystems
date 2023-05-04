@@ -37,7 +37,7 @@ CREATE TABLE DiscEnrollments (
     Year int,
     Undergrad int,
     Grad int,
-    PRIMARY KEY(CampusId, Discipline),
+    PRIMARY KEY(CampusId, Discipline, Year),
     FOREIGN KEY (CampusId) REFERENCES Campuses(Id),
     FOREIGN KEY (Discipline) REFERENCES Disciplines(Id)
 );
