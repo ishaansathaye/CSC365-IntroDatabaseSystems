@@ -26,8 +26,8 @@ CREATE TABLE Wine (
     Price int,
     Score int,
     Cases int DEFAULT NULL,
-    FOREIGN KEY (Grape) REFERENCES Grapes(Grape),
-    FOREIGN KEY (Appellation) REFERENCES Appellations(Appellation)
+    CONSTRAINT Wine_Grape FOREIGN KEY (Grape) REFERENCES Grapes(Grape),
+    CONSTRAINT Wine_App FOREIGN KEY (Appellation) REFERENCES Appellations(Appellation)
 );
 
 -- Name: Ishaan Sathaye
