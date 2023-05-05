@@ -29,7 +29,3 @@ CREATE TABLE Wine (
     CONSTRAINT Wine_Grape FOREIGN KEY (Grape) REFERENCES Grapes(Grape),
     CONSTRAINT Wine_App FOREIGN KEY (Appellation) REFERENCES Appellations(Appellation)
 );
-
--- Name: Ishaan Sathaye
--- Cal Poly Email: isathaye@calpoly.edu
-
