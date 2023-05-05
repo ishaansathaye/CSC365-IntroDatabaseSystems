@@ -1,3 +1,1 @@
-
-
-
+-- Used to echo statements from python script to here
