@@ -2,4 +2,4 @@
 
 # **Cal Poly Email:** isathaye@calpoly.edu
 
-# **Notes:**
+# **Notes:** No errors encountered when running scripts.
