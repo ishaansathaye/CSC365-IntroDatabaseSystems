@@ -12,6 +12,7 @@
     - SQL Examples on Altering Tables and Deleting Data
 - [Lecture 5 - LabThreeSixFive and MySQL Client](./prof-notes/5-LabThreeSixFiveMySQL.pdf)
 - [Lecture 6 - SQL Date Type Conversions](./prof-notes/6-SQLDateType.pdf)
+- [Lecture 7 - Relational Algebra](./prof-notes/7-RelationalAlgebra.pdf)
 
 ## Labs
 
