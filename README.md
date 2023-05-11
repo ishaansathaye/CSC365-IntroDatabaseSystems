@@ -25,3 +25,11 @@
     - [Project Description](./labs/lab2/lab2.pdf)
 - [Lab 3]()
     - [Project Description](./labs/lab3/lab3.pdf)
+
+## Homework
+- [Homework 1](./homework/hw1/hw1.pdf)
+    - [HW 1 Solutions](./homework/hw1/hw1_soln.pdf)
+        - Some solutions may be inaccurate
+
+## Midterm
+- [Midterm 1 Cheat Sheet](./midterm/midterm1/midterm1_cheatsheet.pdf)
