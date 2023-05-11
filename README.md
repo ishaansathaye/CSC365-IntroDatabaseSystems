@@ -1,7 +1,7 @@
 # CSC 365 Intro to Database Systems
 
 ## Class Notes
-- [Master Class Notes](./is-notes/lecture1.pdf)
+- [Lecture Class Notes](./notes/lecture_notes.pdf)
 
 ## Professor Notes
 
