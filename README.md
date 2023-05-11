@@ -13,6 +13,7 @@
 - [Lecture 5 - LabThreeSixFive and MySQL Client](./prof-notes/5-LabThreeSixFiveMySQL.pdf)
 - [Lecture 6 - SQL Date Type Conversions](./prof-notes/6-SQLDateType.pdf)
 - [Lecture 7 - Relational Algebra](./prof-notes/7-RelationalAlgebra.pdf)
+- [Lecture 8 - SQL Select Statement](./prof-notes/8-SQLStatement.pdf)
 
 ## Labs
 
