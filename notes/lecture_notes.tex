@@ -1205,5 +1205,94 @@ $R \times S$ translates to the following SQL statement:
     FROM R, S
 \end{verbatim}
 
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 12: SQL Select Statement \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{SQL Select}
+\begin{gather*}
+    \pi(\tau(\sigma(T_1 \times \dots \times T_n))) \\
+    \text{is equivalent to} \\
+    \pi_L(\tau_F(\sigma_C((T_1 \bowtie_\theta T_2)\dots \bowtie_\theta T_k)) \\
+\end{gather*}
+
+\section*{Translations}
+\begin{gather*}
+    \sigma_c(R) \rightarrow \text{SELECT * FROM R WHERE condition} \\
+    \pi_L(R) \rightarrow \text{SELECT L FROM R} \\
+    \pi_L(R) \rightarrow \text{SELECT DISTINCT L F FROM R} \\
+    \tau_L(R) \rightarrow \text{SELECT * FROM R ORDER BY L} \\
+    R \times S \rightarrow \text{SELECT * FROM R, S} \\
+    R \bowtie_C S \rightarrow \text{SELECT * FROM R, S WHERE condition} \\
+\end{gather*}
+First $\pi$ projection is a bag projection (lazy), while the second is a set
+projection (eager).
+
+\section*{Example}
+$\bullet$ Find all pokemon whose genus is 'Worm'
+\begin{gather*}
+    \pi_{Name}({Pokemon \bowtie_{Pokemon.PokedexId = Species.PokedexId} 
+    \sigma_{genus = 'Worm'}({Species})}) \\
+\end{gather*}
+Can use renaming to make it easier to read (P for Pokemon and S for Species).
+\begin{verbatim}
+    SELECT Name
+    FROM Pokemon P, Species S
+    WHERE P.PokedexId = S.PokedexId
+    AND S.Genus = 'Worm'
+\end{verbatim}
+
+$\bullet$ Find the base experience for all Cactus pokemon. Output name and base
+experience.
+\begin{verbatim}
+    SELECT *
+    FROM Species s, Pokemon p
+    WHERE p.PokedexId = s.PokedexId and s.Genus = 'Cactus'
+\end{verbatim}
+\begin{gather*}
+    \pi_{Pokemon, A.BaseExperience}((\sigma_{gGenus = 'Cactus'}(S) \bowtie_{S.PokedexId = P.PokedexId}(P)) 
+    \bowtie_{P.PokedexId = A.PokedexId}A) \\
+\end{gather*}
+
+$\bullet$ Find all the names of fire pokemon.
+\begin{verbatim}
+    SELECT p.Name
+    FROM Species s, Types t, Pokemon p
+    WHERE s.TypeId = t.TypeId and 
+        s.PokedexId = p.PokedexId and
+        t.Type = 'Fire'
+\end{verbatim}
+\begin{gather*}
+    \pi_{Name}((\sigma_{Type = 'Fire'}(T) \bowtie_{T.TypeId = S.TypeId}(S)) 
+    \bowtie_{S.PokedexId = P.PokedexId}(P)) \\
+\end{gather*}
+
+$\bullet$ Find any fire pokemon who is heavier than Gurdurr.
+\begin{verbatim}
+    SELECT p.Name, a.weight
+    FROM Species s, Types t, Pokemon p, Attributes a, Pokemon g, Attributes gw
+    WHERE s.TypeId = t.TypeId and 
+        s.PokedexId = p.PokedexId and
+        a.PokedexId = p.PokedexId and
+            t.Type = 'Fire' and
+        g.name = 'Gurdurr' and
+        g.PokedexId = gw.PokedexId and
+        gw.weight < a.weight
+    ORDER BY a.weight DESC
+\end{verbatim}
+\begin{gather*}
+    \pi_{Name}((\sigma_{Type = 'Fire'}(T) \bowtie_{T.TypeId = S.TypeId}(S)) 
+    \bowtie_{S.PokedexId = P.PokedexId}(P)) \\
+\end{gather*}
+
 
 \end{document}
