@@ -1259,7 +1259,8 @@ experience.
     WHERE p.PokedexId = s.PokedexId and s.Genus = 'Cactus'
 \end{verbatim}
 \begin{gather*}
-    \pi_{Pokemon, A.BaseExperience}((\sigma_{gGenus = 'Cactus'}(S) \bowtie_{S.PokedexId = P.PokedexId}(P)) 
+    \pi_{Pokemon, A.BaseExperience}((\sigma_{gGenus = 'Cactus'}(S) 
+    \bowtie_{S.PokedexId = P.PokedexId}(P)) 
     \bowtie_{P.PokedexId = A.PokedexId}A) \\
 \end{gather*}
 
@@ -1294,5 +1295,107 @@ $\bullet$ Find any fire pokemon who is heavier than Gurdurr.
     \bowtie_{S.PokedexId = P.PokedexId}(P)) \\
 \end{gather*}
 
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 13: SQL Select Statement Cont. 
+    and Aggregate Operations \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{SQL Select Cont.}
+
+$\bullet$ Find all the BMI of all fire pokemon.
+\begin{verbatim}
+    SELECT p.PokedexId, p.Name
+    FROM Pokemon p, Species s, Types T
+    WHERE s.TypeId = t.TypeId AND
+        p.PokedexId = s.PokedexId AND
+        t.Type = 'Fire'
+
+    SELECT PokedexId, weight/(height*height) AS BMI
+    FROM Attributes
+    WHERE weight/(height*height) < 10 -- cannot use BMI here
+    ORDER BY BMI DESC
+
+    -- Combine above two queries
+
+    SELECT p.PokedexId, p.Name, a.weight/(a.height*a.height) AS BMI
+    FROM Pokemon p, Species s, Types T, Attributes a
+    WHERE s.TypeId = t.TypeId AND
+        p.PokedexId = s.PokedexId AND
+        t.Type = 'Fire' AND
+        p.PokedexId = a.PokedexId
+    ORDER BY BMI DESC
+\end{verbatim}
+Can use "AS" to rename columns. Can also use in "ORDER BY" to sort by that 
+renamed attribute. It \textbf{cannot be used} in "WHERE" because it is not a 
+real attribute.
+
+\section*{Aggregate Operations}
+
+\subsection*{LIKE Operator}
+
+$\bullet$ What are all Pokemon whose name starts with 'B'?
+\begin{verbatim}
+    SELECT Name
+    FROM Pokemon
+    WHERE Name LIKE 'B%'
+    ORDER BY Name
+\end{verbatim}
+"LIKE" is a string operator. \% is a wildcard. \_ is a single character 
+wildcard. Wildcard means any number of characters. \textbf{LIKE is case 
+sensitive}.
+
+\subsection*{Expressions}
+\begin{enumerate}
+    \item \textbf{COUNT} - number of rows
+    \item \textbf{SUM} - sum of values
+    \item \textbf{AVG} - average of values
+    \item \textbf{MIN} - minimum value
+    \item \textbf{MAX} - maximum value
+    \item \textbf{STD} - population standard deviation
+    \item \textbf{VAR} - population variance
+    \item \textbf{GROUP\_CONCAT} - concatenates strings
+\end{enumerate}
+Expressions 1-7 take $<Expression>$ as an argument and return a single value.
+Expression 8 takes $<Expression>$ and $<Separator>$ as arguments and returns a
+single value. \textbf{COUNT only counts non-null values.} Can use DISTINCT to 
+count.
+
+$\bullet$ Example using multiple expressions.
+\begin{verbatim}
+    SELECT count(*) AS Num, AVG(G3) AS 'Mean Grade', MAX(G3) AS 'Best', MIN(G2)
+    as 'Worst Midterm', AVG(dalc+walc)
+    FROM Math
+    WHERE school = 'GP' AND age = 15 AND sex = 'F'
+\end{verbatim}
+
+$\bullet$ Examples using GROUP\_CONCAT: Write out names of all Fox Pokemon in
+one line.
+\begin{verbatim}
+    SELECT GROUP_CONCAT(p.Name ORDER BY p.Name)
+    FROM Pokemon p, Species s
+    WHERE p.PokedexId = s.PokedexId AND
+        s.Genus = 'Fox'
+        
+    SELECT GROUP_CONCAT(p.Name ORDER BY p.Name),
+            GROUP_CONCAT(DISTINCT s.Genus)
+        FROM Pokemon p, Species s
+        WHERE p.PokedexId = s.PokedexId AND
+            s.Genus = 'Fox'
+            
+    SELECT GROUP_CONCAT(p.Name ORDER BY p.Name SEPARATOR ' --> '),
+            GROUP_CONCAT(DISTINCT s.Genus)
+        FROM Pokemon p, Species s
+        WHERE p.PokedexId = s.PokedexId AND
+            s.Genus = 'Fox'
+\end{verbatim}
 
 \end{document}
