@@ -11,12 +11,6 @@ WHERE m.Model = 'PONTIAC' AND m.Model = ma.Model AND ma.Id = c.Id
     AND c.Year < 1977
 ORDER BY c.Year;
 
-SELECT ma.Make, c.Year
-FROM models m, makes ma, cardata c, carmakers cm
-WHERE m.Model = ma.Model AND ma.Id = c.Id
-    AND (m.Model = 'PONTIAC' AND c.Year < 1977)
-ORDER BY c.Year, ma.Make DESC;
-
 -- Q2
 -- Find all cars produced by Chrysler (the company) in 1976 and 1977. 
 -- Report the name of the car and the year it was produced, sort output in 
