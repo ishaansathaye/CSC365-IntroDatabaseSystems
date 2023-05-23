@@ -30,6 +30,8 @@
     - [Project Description](./labs/lab3/lab3.pdf)
 - [Lab 4]()
     - [Project Description](./labs/lab4/lab4.pdf)
+- [Lab 5]()
+    - [Project Description](./labs/lab5/lab5.pdf)
 
 ## Homework
 - [Homework 1](./homework/hw1/hw1.pdf)
