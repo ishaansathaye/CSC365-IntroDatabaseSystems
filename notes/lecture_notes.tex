@@ -1398,4 +1398,95 @@ one line.
             s.Genus = 'Fox'
 \end{verbatim}
 
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 14: Aggregate Operations \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{Grouping and Aggregation in Relational Algebra: $\gamma$}
+
+Grouping operate creates a transformation from a set of tuples to a set of
+groups. Each group is a set of tuples that have the same value for the
+attributes in the group by clause.
+
+\begin{gather*}
+    \gamma_{A_1,\dots A_k, Agg(C_1),\dots Agg(C_m)}(<Relation>) \\
+    \text{where } \{A_1,\dots A_k\} \in {B_1, \dots B_n} \\
+    \text{where } \{C_1,\dots C_m\} \in {B_1, \dots B_n} \\
+    {A_1 \dots A_k} \cap {C_1 \dots C_m} = \emptyset \\
+    \text{Agg} \in {COUNT, SUM, AVG, MIN, MAX, STD, VAR, GROUP\_CONCAT} \\
+\end{gather*}
+
+$\gamma_{<Grouping Attributes>, <Aggregation Attributes>}(<Relation>) = \{ t |
+t = (a_1,..., a_k, c_1,...,c_m)\}$ $a_1,...a_m$ are all combinations of values 
+of $A_1,\dots A_k$ found in R. $c_1,...,c_m$ are all combinations of values of 
+$C_1,\dots C_m$ found in R.
+
+$\bullet$ Aggregate functions that show up in other clauses should still be 
+included in the $\gamma$ clause. Projection would then remove them from showing 
+up in the final result.
+
+\subsection*{Examples}
+$\gamma_{x, max(Y)}(R)$
+
+$\gamma_{A, x, max(Y), count(*)}{R}$ results in:
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & x & max(Y) & count(*) \\
+        \hline
+        A & 1 & 9 & 2 \\
+        \hline
+        B & 1 & 10 & 2 \\
+        \hline
+        A & 2 & 18 & 3 \\
+        \hline
+        A & 3 & -2 & 1 \\
+        \hline
+        B & 3 & 7 & 1 \\
+        \hline
+        A & 4 & 7 & 1 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section*{Group By in SQL}
+
+Order of SQL clauses:
+\begin{verbatim}
+    6 - SELECT
+    1 - FROM
+    2 - WHERE
+    3 - GROUP BY
+    4 - HAVING
+    5 - ORDER BY
+\end{verbatim}
+
+Group By Clause in SQL
+\begin{verbatim}
+    SELECT <Grouping Attributes>, <Aggregation Attributes>
+    FROM <Relation>
+    WHERE <Condition>
+    GROUP BY <Grouping Attributes>
+    HAVING <Condition>
+    ORDER BY <Attribute>
+\end{verbatim}
+
+If using Group By in SQL, then SELECT clause must contain only:
+\begin{itemize}
+    \item Attributes that are listed in the GROUP BY clause.
+    \item Aggregate operations on attributes not listed in the GROUP BY clause.
+    \item COUNT(*)
+\end{itemize}
+
 \end{document}
