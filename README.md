@@ -5,15 +5,18 @@
 
 ## Professor Notes
 
-- [Lecture 1 - What is a database?](./prof-notes/1-What-is-a-database.pdf)
-- [Lecture 2 - Databases and DBMS in a nutshell](./prof-notes/2-Databases-DBMS.pdf)
-- [Lecture 3 - Relational Model](./prof-notes/3-RelationalDataModel.pdf)
-- [Lecture 4 - SQL DDL and DML](./prof-notes/4-SQLDDLDML.pdf)
+- [Lecture 1 - What is a database?](./prof-notes/a-What-is-a-database.pdf)
+- [Lecture 2 - Databases and DBMS in a nutshell](./prof-notes/b-Databases-DBMS.pdf)
+- [Lecture 3 - Relational Model](./prof-notes/c-RelationalDataModel.pdf)
+- [Lecture 4 - SQL DDL and DML](./prof-notes/d-SQLDDLDML.pdf)
     - SQL Examples on Altering Tables and Deleting Data
-- [Lecture 5 - LabThreeSixFive and MySQL Client](./prof-notes/5-LabThreeSixFiveMySQL.pdf)
-- [Lecture 6 - SQL Date Type Conversions](./prof-notes/6-SQLDateType.pdf)
-- [Lecture 7 - Relational Algebra](./prof-notes/7-RelationalAlgebra.pdf)
-- [Lecture 8 - SQL Select Statement](./prof-notes/8-SQLStatement.pdf)
+- [Lecture 5 - LabThreeSixFive and MySQL Client](./prof-notes/e-LabThreeSixFiveMySQL.pdf)
+- [Lecture 6 - SQL Date Type Conversions](./prof-notes/f-SQLDateType.pdf)
+- [Lecture 7 - Relational Algebra](./prof-notes/g-RelationalAlgebra.pdf)
+- [Lecture 8 - SQL Select Statement](./prof-notes/h-SQLStatement.pdf)
+- [Lecture 9 - Aggregate Operations](./prof-notes/i-SQLStatement2.pdf)
+- [Lecture 10 - Group By](./prof-notes/j-SQLStatement3.pdf)
+- [Lecture 11 - Example for Group By](./prof-notes/k-SQLStatement4.pdf)
 
 ## Labs
 
@@ -25,6 +28,8 @@
     - [Project Description](./labs/lab2/lab2.pdf)
 - [Lab 3]()
     - [Project Description](./labs/lab3/lab3.pdf)
+- [Lab 4]()
+    - [Project Description](./labs/lab4/lab4.pdf)
 
 ## Homework
 - [Homework 1](./homework/hw1/hw1.pdf)
