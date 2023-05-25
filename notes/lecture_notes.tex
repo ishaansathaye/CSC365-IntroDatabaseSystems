@@ -1489,4 +1489,46 @@ If using Group By in SQL, then SELECT clause must contain only:
     \item COUNT(*)
 \end{itemize}
 
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 15: HAVING Clause, 
+    GROUP\_CONCAT Ex., Nested Queries \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{Grouping and Aggreation Continued}
+
+This can be done:
+\begin{verbatim}
+    SELECT ...
+    FROM ... 
+    WHERE A > 1
+    GROUP BY
+\end{verbatim}
+
+\textbf{This cannot be done:}
+\begin{verbatim}
+    SELECT A, Sum(B)
+    FROM R
+    WHERE SUM(B) > 10
+    GROUP BY A
+\end{verbatim}
+Sum(B) is not an attribute of R, so it cannot be used in the WHERE clause.
+
+\subsection*{HAVING Clause}
+It is allowed to access any aggregation attribute such as from the GROUP BY
+list and ones not in that list. It is similar to the WHERE clause, but it 
+is applied after the GROUP BY clause.
+
+\section*{Nested Queries}
+Demonstrated examples. Notes in professor's document.
+
+
 \end{document}
