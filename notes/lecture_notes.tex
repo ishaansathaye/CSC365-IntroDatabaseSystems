@@ -1530,5 +1530,105 @@ is applied after the GROUP BY clause.
 \section*{Nested Queries}
 Demonstrated examples. Notes in professor's document.
 
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 16: Nested Queries \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{IN}
+\begin{verbatim}
+    SELECT ...
+    FROM ...
+    WHERE A IN (SELECT ...)
+\end{verbatim}
+IN can be used to check if a value is in a set of values. The subquery must
+return a set of values.
+
+\section*{Example: IN}
+$\bullet$ Find the max and min weight of a ground pokemon
+\begin{verbatim}
+    SELECT Pokemon.Name, weight
+    FROM Attributes, Pokemon
+    WHERE Attributes.PokedexID IN
+        (SELECT PokedexId FROM Species
+        WHERE typeID = (SELECT typeId
+                        FROM Types 
+                        WHERE type = 'ground')) AND 
+        Pokemon.PokedexId = Attributes.PokedexId
+\end{verbatim}
+
+\section*{Example: ANY}
+$\bullet$ Find the weights of fire pokemon that are heavier than some ground
+pokemon
+\begin{verbatim}
+    SELECT Attributes.PokedexId, weight
+    FROM Attributes, Pokemon
+    WHERE Attributes.PokedexID IN
+        (SELECT PokedexId FROM Species
+        WHERE typeID = (SELECT typeId
+                        FROM Types 
+                        WHERE type = 'fire')) AND 
+        Pokemon.PokedexId = Attributes.PokedexId AND
+        weight > ANY
+            (SELECT weight
+            FROM Attributes, Pokemon
+            WHERE Attributes.PokedexID IN
+                (SELECT PokedexId FROM Species
+                WHERE typeID = (SELECT typeId
+                                FROM Types 
+                                WHERE type = 'ground')) AND 
+                Pokemon.PokedexId = Attributes.PokedexId)
+\end{verbatim}
+
+\section*{Example: ALL}
+$\bullet$ Find ground pokemon that are heavier than all fire pokemon
+\begin{verbatim}
+    SELECT Attributes.PokedexId, weight
+    FROM Attributes, Pokemon
+    WHERE Attributes.PokedexID IN
+        (SELECT PokedexId FROM Species
+        WHERE typeID = (SELECT typeId
+                        FROM Types 
+                        WHERE type = 'ground')) AND 
+        Pokemon.PokedexId = Attributes.PokedexId AND
+        weight > ALL
+            (SELECT weight
+            FROM Attributes, Pokemon
+            WHERE Attributes.PokedexID IN
+                (SELECT PokedexId FROM Species
+                WHERE typeID = (SELECT typeId
+                                FROM Types 
+                                WHERE type = 'fire')) AND 
+                Pokemon.PokedexId = Attributes.PokedexId)
+\end{verbatim}
+
+\section*{EXISTS}
+\subsection*{Correlated Nested Queries}
+$\bullet$ Find the pokemon with the highest weight for each type
+\begin{verbatim}
+    SELECT *
+    FROM Stats a
+    WHERE weight = (SELECT MAX(weight) FROM Stats b
+                WHERE a.type = b.type)
+\end{verbatim}
+This is a correlated nested query because the subquery depends on the outer
+query. It will compute joins for every row in the outer query.
+
+\subsection*{Example: EXISTS}
+$\bullet$ Find all pokemon types that have a pokemon heavier than 3000
+\begin{verbatim}
+    SELECT DISTINCT type
+    FROM Stats a
+    WHERE EXISTS (SELECT * FROM Stats b
+                WHERE a.type = b.type AND weight > 3000)
+\end{verbatim}
 
 \end{document}
