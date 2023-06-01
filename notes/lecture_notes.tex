@@ -17,6 +17,7 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{url}
 \usepackage{qtree}
+\usepackage{amssymb}
 %
 % the following macro is used to generate the header.
 %
@@ -26,18 +27,6 @@
    \newpage
    \setcounter{page}{1}
    \noindent
-   \begin{center}
-   \framebox{
-      \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-		\hfill Spring 2023} }
-       \vspace{4mm}
-       \hbox to 6.28in { {\Large \hfill Lecture 1:  Database and DBMS \hfill} }
-       \vspace{2mm}
-       \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-      \vspace{2mm}}
-   }
-   \end{center}
 }
 
 % use these for theorems, lemmas, proofs, etc.
@@ -48,12 +37,33 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
 \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
 
 \begin{document}
+\tableofcontents
 \notes
 
 
 
+
+% \newpage
+% \hfill \break
+% \framebox{
+%     \vbox{\vspace{2mm}
+%     \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+%     \hfill Spring 2023} }
+%     \vspace{4mm}
+%     \hbox to 6.28in { {\Large \hfill Lecture 1:  Database and DBMS \hfill} }
+%     \vspace{2mm}
+%     \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+%     \vspace{2mm}}
+% }
+
+\section{\fontsize{17.28}{0} \selectfont Database and DBMS}
 
 \section*{Introduction}
 Definition of a database and DBMS in Professor Notes.
@@ -1619,7 +1629,7 @@ $\bullet$ Find the pokemon with the highest weight for each type
     WHERE weight = (SELECT MAX(weight) FROM Stats b
                 WHERE a.type = b.type)
 \end{verbatim}
-This is a correlated nested query because the subquery depends on the outer
+This is a correlated nested query because the sub-query depends on the outer
 query. It will compute joins for every row in the outer query.
 
 \subsection*{Example: EXISTS}
@@ -1630,5 +1640,130 @@ $\bullet$ Find all pokemon types that have a pokemon heavier than 3000
     WHERE EXISTS (SELECT * FROM Stats b
                 WHERE a.type = b.type AND weight > 3000)
 \end{verbatim}
+
+\newpage
+\hfill \break
+\framebox{
+    \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
+    \hfill Spring 2023} }
+    \vspace{4mm}
+    \hbox to 6.28in { {\Large \hfill Lecture 17: Difference, Joins, and 
+    Additional SQL Syntax \hfill} }
+    \vspace{2mm}
+    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
+    \vspace{2mm}}
+}
+
+\section*{Difference}
+In Mysql: Sub-queries + NOT IN
+\begin{verbatim}
+    SELECT ...
+    FROM ...
+    WHERE A NOT IN (SELECT ...)
+\end{verbatim}
+
+In Oracle and SQL: EXCEPT
+\begin{verbatim}
+    SELECT ...
+    FROM ...
+    EXCEPT
+    SELECT ...
+    FROM ...
+\end{verbatim}
+
+In ANSI SQL: MINUS
+
+\subsection*{Example: Difference}
+\begin{verbatim}
+    SELECT Type, typeId
+    FROM Types
+    WHERE type NOT IN (
+                        SELECT DISTINCT type
+                        FROM Stats
+                        WHERE weight > 1000
+                        )
+\end{verbatim}
+\begin{gather}
+    T - (T \ltimes_{T.typeId=S.typeId} (S \ltimes_{S.PokedexId=A.PokedexId} 
+    \sigma_{weight > 1000}(A)))
+\end{gather}
+
+\section*{Join Syntax and Outer Joins}
+\subsection*{JOIN Syntax}
+\begin{verbatim}
+    SELECT ...
+    FROM <table1> JOIN <table2> ON <condition>
+\end{verbatim}
+Can also use USING instead of ON if the join condition is on the same attribute:
+\begin{verbatim}
+    SELECT ...
+    FROM <table1> JOIN <table2> USING (<attribute>)
+\end{verbatim}
+This is different from NATURAL JOIN because NATURAL JOIN will join on all
+attributes with the same name:
+\begin{verbatim}
+    SELECT ...
+    FROM <table1> NATURAL JOIN <table2>
+\end{verbatim}
+
+\subsubsection*{Example: JOIN}
+\begin{verbatim}
+    SELECT *
+    FROM Pokemon p JOIN Attributes a ON p.PokedexId = a.PokedexId
+\end{verbatim}
+Equivalent to:
+\begin{verbatim}
+    SELECT *
+    FROM Pokemon p, Attributes a
+    USING (PokedexId)
+\end{verbatim}
+Equivalent to:
+\begin{verbatim}
+    SELECT *
+    FROM Pokemon p, Attributes a
+    WHERE p.PokedexId = a.PokedexId
+\end{verbatim}
+
+\subsection*{Outer Joins}
+Outer join is a join that includes tuples that do not have a match in the other
+table. There are three types of outer joins: left, right, and full.
+
+SQL Syntax:
+\begin{verbatim}
+    SELECT ...
+    FROM <table1> LEFT/RIGHT [OUTER] JOIN <table2> ON <condition>
+\end{verbatim}
+Can omit OUTER keyword but it is good practice to include it for clarity.
+
+\subsubsection*{Left Outer Join}
+\begin{gather*}
+    R \leftouterjoin S = (R \bowtie_{\theta} S) \cup \{(t, NULL, ..., NULL) | 
+    r \in R \text{ and no tuple } t' \in S \text{ can be joined with } t \text{ 
+    on condition } \theta\} 
+\end{gather*}
+
+\subsubsection*{Right Outer Join}
+\begin{gather*}
+    R \rightouterjoin S = (R \bowtie_{\theta} S) \cup \{(NULL, ..., NULL, t') |
+    t' \in S \text{ and no tuple } t \in R \text{ can be joined with } t' \text{
+    on condition } \theta\}
+\end{gather*}
+
+\subsubsection*{Full Outer Join}
+\begin{gather*}
+    R \fullouterjoin S = (R \leftouterjoin S) \cup (R \rightouterjoin S)
+\end{gather*}
+
+\section*{Additional SQL Syntax}
+In professor notes: WITH, IF, and CASE.
+
+\subsection*{WITH Example:}
+\begin{verbatim}
+    WITH T1 AS (SELECT ...)
+    SELECT ...
+    FROM T1 JOIN ...
+\end{verbatim}
+
 
 \end{document}
