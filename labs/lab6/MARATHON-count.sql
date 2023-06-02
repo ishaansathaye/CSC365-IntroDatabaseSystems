@@ -38,4 +38,4 @@ SELECT State, COUNT(*) AS Top10
 FROM marathon m
 WHERE m.GroupPlace <= 10
 GROUP BY State
-ORDER BY Top10 DESC;
+ORDER BY Top10 DESC, State ASC;
