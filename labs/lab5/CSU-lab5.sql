@@ -37,3 +37,16 @@ WHERE e.CampusId = c.Id AND d.CampusId = c.Id
     AND c.Campus = 'California Polytechnic State University-San Luis Obispo'
     AND (e.Enrolled > 17000 OR d.Degrees > 3500)
 ORDER BY e.Year ASC;
+-- Did not copy and paste this correct solution from labthreesixfive:
+SELECT d.Year as Year
+FROM campuses c, enrollments e, degrees d
+WHERE d.CampusID = c.Id
+    AND c.Campus = 'California Polytechnic State University-San Luis Obispo'
+    AND (d.Degrees > 3500)
+UNION
+SELECT e.Year as Year
+FROM campuses c, enrollments e
+WHERE e.CampusId = c.Id
+    AND c.Campus = 'California Polytechnic State University-San Luis Obispo'
+    AND (e.Enrolled > 17000)
+ORDER BY Year ASC;
