@@ -18,6 +18,7 @@
 \usepackage{url}
 \usepackage{qtree}
 \usepackage{amssymb}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
 %
 % the following macro is used to generate the header.
 %
@@ -63,23 +64,13 @@
 %     \vspace{2mm}}
 % }
 
-\section{\fontsize{17.28}{0} \selectfont Database and DBMS}
+\section{Database and DBMS}
 
 \section*{Introduction}
 Definition of a database and DBMS in Professor Notes.
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 2:  Relational Data Model \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Relational Data Model}
 
 \section*{Relational Data Model}
 \begin{definition}
@@ -173,17 +164,7 @@ make a \textbf{network model}.
 \end{verbatim}
 
 \newpage
-\hfill \break 
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 3:  RDM Cont. \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{RDM Cont.}
 
 \section*{Relational Data Model}
 
@@ -195,17 +176,7 @@ What makes a record unique?
 \end{itemize}
 
 \newpage
-\hfill \break 
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 4: SQL DDL and DML \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    }
-}
+\section{SQL DDL and DML}
 
 \section*{MySQL Access}
 \begin{enumerate}
@@ -382,17 +353,7 @@ INSERT INTO Departments(DeptId, Abbr, Name, College, Building, Room)
 \end{verbatim}
 
 \newpage
-\hfill \break 
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 5: DDL and DML Continued \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    }
-}
+\section{DDL and DML Continued}
 
 \section*{DML}
 \subsection*{Updating Data}
@@ -443,18 +404,7 @@ Adding an attribute, dropping/adding a constraint, renaming a table, disable/ena
 keys, and modifying attributes examples are in this professor notes: \url{4-SQLDDLDML.pdf}
 
 \newpage
-\hfill \break 
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 6: DML/DDL Cont., WHERE Clause., 
-    and MySQL Conn. \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    }
-}
+\section{ DML/DDL Cont., WHERE Clause, and MySQL Conn.}
 
 \section*{Announcements}
 \subsection*{Running Scripts for Lab 2}
@@ -516,18 +466,7 @@ Breifly went over the Python examples on Course webpage that connect to
 MySQL server.
 
 \newpage
-\hfill \break 
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 7: Python Connectivity and 
-    Relational Algebra \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    }
-}
+\section{Python Connectivity and Relational Algebra}
 
 \section*{Python MySQL Connectivity}
 Relational Database is sitting on a server. It is listening
@@ -598,17 +537,7 @@ are values. Ex. t = ($a_1$,..., $a_n$) and it could be referred to as t.$A_1$ = 
 \end{itemize}
 
 \newpage
-\hfill \break 
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 8: Relational Algebra \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    }
-}
+\section{Relational Algebra}
 
 \section*{Relational Algebra}
 R, S,  T are relational tables and these are sets. Set Operations include
@@ -739,17 +668,7 @@ $\bullet$ Who purchased Receipt 3 $\longrightarrow$ Find a person with Id 1: $
 $\bullet$ Notation: $R \bowtie_{C} S = \sigma_{R.x operation S.Y}(R \times S)$
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 9: Joins \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Joins}
 
 \section*{Announcements}
 $\bullet$ Double-sided cheat sheet allowed for Midterm.
@@ -880,17 +799,7 @@ Example:
 \end{gather*}
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 10: RA Operations \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Relational Algebra Operations}
 
 \section*{Examples}
 \begin{table}[!htb]
@@ -1024,18 +933,7 @@ better as they generate less data.
                                       \qroof{\textit{to use}}.CP ]]]]]]
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 11: Relational Algebra 
-    Continued and SQL Select Statement \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Relational Algebra Continued and SQL Select Statement}
 
 \section*{Sort: $\tau$}
 $\tau_F$ where F is a list of attributes. Sorts the relation by the attributes.
@@ -1216,17 +1114,7 @@ $R \times S$ translates to the following SQL statement:
 \end{verbatim}
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 12: SQL Select Statement \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{SQL Select Statement}
 
 \section*{SQL Select}
 \begin{gather*}
@@ -1306,18 +1194,7 @@ $\bullet$ Find any fire pokemon who is heavier than Gurdurr.
 \end{gather*}
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 13: SQL Select Statement Cont. 
-    and Aggregate Operations \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{SQL Select Statement Continued and Aggregate Operations}
 
 \section*{SQL Select Cont.}
 
@@ -1409,17 +1286,7 @@ one line.
 \end{verbatim}
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 14: Aggregate Operations \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Aggregate Operations}
 
 \section*{Grouping and Aggregation in Relational Algebra: $\gamma$}
 
@@ -1500,18 +1367,7 @@ If using Group By in SQL, then SELECT clause must contain only:
 \end{itemize}
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 15: HAVING Clause, 
-    GROUP\_CONCAT Ex., Nested Queries \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{HAVING Clause, GROUP\_CONCAT Example, and Nested Queries}
 
 \section*{Grouping and Aggreation Continued}
 
@@ -1541,17 +1397,7 @@ is applied after the GROUP BY clause.
 Demonstrated examples. Notes in professor's document.
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 16: Nested Queries \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Nested Queries}
 
 \section*{IN}
 \begin{verbatim}
@@ -1642,18 +1488,7 @@ $\bullet$ Find all pokemon types that have a pokemon heavier than 3000
 \end{verbatim}
 
 \newpage
-\hfill \break
-\framebox{
-    \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf CSC 365-07: Introduction to Database Systems
-    \hfill Spring 2023} }
-    \vspace{4mm}
-    \hbox to 6.28in { {\Large \hfill Lecture 17: Difference, Joins, and 
-    Additional SQL Syntax \hfill} }
-    \vspace{2mm}
-    \hbox to 6.28in { {\it Instructor: Alex Dekhtyar \hfill Ishaan Sathaye} }
-    \vspace{2mm}}
-}
+\section{Difference, Joins, and Additional SQL Syntax}
 
 \section*{Difference}
 In Mysql: Sub-queries + NOT IN
@@ -1765,5 +1600,35 @@ In professor notes: WITH, IF, and CASE.
     FROM T1 JOIN ...
 \end{verbatim}
 
+\newpage
+\section{Midterm Information, Database Views, Query Plans, Indexes}
+
+\section*{Midterm Information}
+\begin{itemize}
+    \item 3 hours
+    \item Data Description Pages Out Wednesday
+    \item Cheat Sheet of 1 page both sides
+    \item Comprehensive
+    \item Topics: SQL DML/DDl, SQL Select, Relational Data Model (table, 
+    attributes, how to define there, schema vs instance, keys, role of 
+    candidate keys, primary keys get selected, candidate keys get used how),
+    Relational Algebra (will include $\gamma$, $\fullouterjoin$), Query Trees,
+    Relational Algebra to SQL Select Statement or other way around
+\end{itemize}
+
+\section*{Database Views}
+Database View is a single table that is derived from other tables in the
+database, and whose content changes together with the content of the underlying
+tables.
+
+View Maintenance is the process of keeping views up to date when the database
+is updated.
+\begin{itemize}
+    \item Materialized Views $\longrightarrow$ create a table storing output,
+    INSERT/UPDATE/DELETE; incremental view maintenance
+    \item On Demand Views $\longrightarrow$ run SQL query defining the view each
+    time
+    \item MYSQL $\longrightarrow$ On Demand Views
+\end{itemize}
 
 \end{document}
