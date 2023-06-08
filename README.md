@@ -18,8 +18,9 @@
 - [Lecture 10 - Group By](./prof-notes/j-GroupBy.pdf)
 - [Lecture 11 - Example for Group By](./prof-notes/k-ExGroupBy.pdf)
 - [Lecture 12 - Subqueries](./prof-notes/l-NestedQueries.pdf)
-- [Lecture 13 - Subqueries Continued](./prof-notes/m-AdditionalSQLSyntax.pdf)
-- [Lecture 14 - Subqueries Continued](./prof-notes/n-JoinOuterJoin.pdf)
+- [Lecture 13 - Additional SQL Syntax: WITH, IF & ELSE, CASE & 
+    WHEN](./prof-notes/m-AdditionalSQLSyntax.pdf)
+- [Lecture 14 - JOIN Syntax and Outer Joins](./prof-notes/n-JoinOuterJoin.pdf)
 
 ## Labs
 
@@ -27,16 +28,12 @@
     - [Project Description](./labs/lab1/lab1-1.pdf)
 - [Lab 1-2](./labs/lab1/Lab1-2.ipynb)
     - [Project Description](./labs/lab1/lab1-2.pdf)
-- [Lab 2](SQL DDL, DML)
-    - [Project Description](./labs/lab2/lab2.pdf)
-- [Lab 3](SQL DDL, DML + Python)
-    - [Project Description](./labs/lab3/lab3.pdf)
-- [Lab 4](SQL SELECT)
-    - [Project Description](./labs/lab4/lab4.pdf)
-- [Lab 5](SQL SELECT and Counting)
-    - [Project Description](./labs/lab5/lab5.pdf)
-- [Lab 6](Counting and grouping)
-    - [Project Description](./labs/lab6/lab6.pdf)
+- [Lab 2: SQL DDL, DML](./labs/lab2/lab2.pdf)
+- [Lab 3: SQL DDL, DML + Python](./labs/lab3/lab3.pdf)
+- [Lab 4: SQL SELECT](./labs/lab4/lab4.pdf)
+- [Lab 5: SQL SELECT and Counting](./labs/lab5/lab5.pdf)
+- [Lab 6: Counting and grouping](./labs/lab6/lab6.pdf)
+- [Lab 7: Complex SQL Queries](./labs/lab7/lab7.pdf)
 
 ## Homework
 - [Homework 1](./homework/hw1/hw1.pdf)
@@ -44,4 +41,4 @@
         - Some solutions may be inaccurate
 
 ## Midterm
-- [Midterm 1 Cheat Sheet](./midterm/midterm1/midterm1_cheatsheet.pdf)
+- [Midterm 1 Cheat Sheet](./midterm/midterm1/midterm1_cheat.pdf)
