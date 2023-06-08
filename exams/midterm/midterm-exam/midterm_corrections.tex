@@ -27,7 +27,8 @@ B and an attribute C, which is a foreign key referencing R. Table S contains
 \textbf{Answer:} 3,457 tuples. The join will only contain tuples where the
 value of the A column is equal to the value of the C column in S.
 
-\subsection*{Problem 2 (a)}
+\subsection*{Problem 2}
+\subsubsection*{(a)}
 Write SQL commands to create all three tables. (Make sure your SQL commands
 include ALL necessary information.)
 
@@ -55,6 +56,81 @@ CREATE TABLE Songs {
     FOREIGN KEY(CD) REFERENCES CD(Id)
 }
 \end{verbatim}
+
+\subsubsection*{(b)}
+Write SQL commands that add two attributes to the Songs table: for the author 
+of the music, and one for the author of the lyrics. Write a SQL command to set
+the author of both music and lyrics for the song Airport to be Hammill. \newline
+
+\begin{verbatim}
+    ALTER TABLE Songs
+        ADD MusicAuthor CHAR(20),
+        ADD LyricsAuthor CHAR(20);
+    UPDATE Songs
+        SET MusicAuthor = 'Hammill', LyricsAuthor = 'Hammill'
+        WHERE Title = 'Airport';
+\end{verbatim}
+
+\subsubsection*{(c)}
+Write a single SQL statement that keeps in the CDs table only the information
+about (a) albums after 2005, (b) albums released on Carol before 1974, and (c)
+album titled Blood Money. All other rows shall be removed.\newline
+
+\begin{verbatim}
+    DELETE FROM CD
+        WHERE (Year <= 2005 AND Label != 'Carol')
+            OR (Year <= 1974 AND Label = 'Carol')
+            OR Title != 'Blood Money';
+\end{verbatim}
+
+\subsection*{Problem 3}
+
+\subsubsection*{(b)}
+Find all musicians that released multiple albums in 1970s. Report the name of
+the musician in relational algebra. \newline
+
+$\pi_{Name}(M \bowtie_{M.ID = C.Musician}(\sigma_{C.Year >= 1970 \land 
+C.Year < 1980}(C)))$
+
+\subsubsection*{(c)}
+For each song that is longer than Shingle's duration, report its title, the year it was
+released, and the name of the musician who wrote it. \newline
+
+Shingle's duration: $\rho_{SGL}(\pi_{Duration}(\sigma_{Name = \text{Shingle}}
+(S)))$
+
+$\pi_{S.Title, C.Year, M.Name}(((S \bowtie_{S.Duration > SGL.Duration}(SGL)) 
+    \bowtie_{S.CD = C.ID} C) \bowtie_{M.ID = C.Musician} M)$
+
+\subsubsection*{(d)}
+Find all albums that do not have a song longer than 4 minutes. Report the name 
+of the album and the name of the musician who recorded the album. \newline
+
+Find all songs more than 4 minutes long: $\rho_{S4}(\pi_{Duration}(
+    \sigma_{Duration > 4}(S)))$
+
+$\pi_{CD.Title, M.Name}((C \bowtie_{C.ID = S.CD} S) \bowtie_{C.Musician = M.ID}
+M) - \pi_{CD.Title, M.Name}((C \bowtie_{C.ID = S.CD} S) \bowtie_{C.Musician =
+M.ID} M \bowtie_{S.Duration > 4} S)$
+
+\subsection*{Problem 4}
+\subsubsection*{(a)}
+Forgot to write "Report the musicians names sorted by Name" \newline
+
+\subsubsection*{(c)}
+Forgot to include Peter Hammill in the result. \newline
+
+\subsection*{Problem 6}
+\subsubsection*{(2)}
+Foreign keys cannot consist of multiple attributes (T/F). \newline
+
+\textbf{Answer:} True.
+
+\subsubsection*{(6)}
+If R and S have the same relational schema, R $\cap$ S is always equal to
+$R - (R - S)$ (T/F). \newline
+
+\textbf{Answer:} True, write out example to prove.
 
 
 \end{document}
