@@ -1,0 +1,151 @@
+\documentclass{article}
+
+\usepackage{color,fancyhdr,ifthen,amssymb,amsfonts,amsmath}
+
+\pagestyle{fancy}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\headwidth}{\textwidth}
+\parindent=0in
+
+\newcommand{\headandfoot}[3]{\lhead{#1}\chead{#2}\rhead{\ifthenelse{\isodd{
+    \thepage}}{Ishaan Sathaye
+ {\hspace{.25in}}}{}}}
+
+\headandfoot{Midterm 1 Cheat Sheet}{ CSC 365}
+
+\begin{document}
+
+
+MISTAKE: NEEDED TO PUT EXAMPLES OF UPDATING/DELETING WITH FOREIGN KEYS AND
+WORDS TO RELATIONAL ALGEBRA
+
+\subsubsection*{Relational Data Model}
+Relational Table requires Name and Schema. \textbf{Database} is a collection of 
+Relations tables. Record, tuple is a single row. Schema is the name of relation 
+plus set of attributes of the relation. Relation instance is a set of tuples for
+a given relation. Cardinality is \# of tuples. Degree is \# of attributes.
+\textbf{DBMS}is a software designed to maintain and support databases.
+
+
+\subsubsection*{Constraints}
+\begin{itemize}
+    \item Candidate key is a set of attributes that uniquely defines a record in
+    table, minimal such set set of attributes (every attribute is necessary)
+    \item Superkey - set of attributes that uniquely defines a record in table
+    \item Primary key - candidate key chosen to be used as primary key (can have
+    multiple candidate keys as one primary key)
+\end{itemize}
+
+\subsubsection*{DDL}
+Commands act upon the schema. CREATE, DROP, ALTER. To define relational table
+you need table name, attributes (name and type) and constraints.
+\begin{verbatim}
+    CREATE TABLE <table name> (<attribute name> <type> <constraint list>)
+    DROP TABLE <table name>
+    ALTER TABLE <table name> ADD <attribute name> <type> <constraint list>
+    ALTER TABLE <table name> DROP <attribute name>
+\end{verbatim}
+Put UNIQUE after attribute name to make it a candidate key. Put PRIMARY KEY after
+attribute name to make it a primary key. Put FOREIGN KEY after attribute name to
+make it a foreign key.
+
+\subsubsection*{DML}
+Commands act upon the data. INSERT, DELETE, UPDATE, SELECT.
+\begin{verbatim}
+    SELECT <attribute list> FROM <table list> WHERE <condition>
+    UPDATE <table list> SET <attribute list> WHERE <condition>
+    DELETE FROM <table list> WHERE <condition> -- just with table name deletes all rows
+    INSERT INTO <table list> VALUES <value list>
+\end{verbatim}
+
+\subsubsection*{Relational Algebra}
+Doing these removes duplicates since these are sets. Try not to look through
+entire table when solving problems.
+\begin{itemize}
+    \item Selection - $\sigma_{\text{C}}(R)$ - returns rows that satisfy C
+    \item Projection - $\pi_{\text{attributes}}(R)$ - returns columns that are
+    in attribute list, no duplicates
+    \item Cartesian Product - $R \times S$ - returns all combinations of rows 
+    (match every row in R with every row in S)
+    \item Rename - $\rho_{\text{new}}(R)$ - used to do self joins, once original 
+    renamed they are forgotten for the duration of the operation
+    \item Duplication Elimination - $\delta(R)$ - removes duplicates, enables us
+    to between set operations and bag operations
+    \item Sort - $\tau_{\text{C}}(R)$ - sorts rows of R based on C, $F=Desc(A 
+    \% B),B,Desc(C)$
+\end{itemize}
+
+\textbf{Joins}
+\begin{itemize}
+    \item Theta Join (Equi-Join) - $R \bowtie_{\text{C}} S$ - returns all 
+    combinations of rows that satisfy C, compare every combination \textbf{Keep
+    columns since there is no projection}, $R \bowtie_{\Theta} S = 
+    \sigma_{\Theta}(R \times S)$
+    \item Natural Join - $R \bowtie S$ - returns all combinations of rows that
+    match on common attributes, \textbf{removes one set of common attributes
+    from the final relation}
+    \item Left/Right Semi Join - $R \ltimes \rtimes S$ - only attributes of one relation
+    are kept, projection on all elements of one relation
+\end{itemize}
+
+\subsubsection*{Set Operations}
+\textbf{Only apply these when R and S have the same schema.} These are bag
+operations.
+\begin{itemize}
+    \item Union - $R \cup S$ - combine rows of R and S, 
+    \textbf{remove duplicates}
+    \item Set Difference - $R - S$ - keep rows that are unique to R
+    \item Intersection - $R \cap S$ - keep rows that are in both R and S
+\end{itemize}
+
+\subsubsection*{Types}
+\begin{itemize}
+    \item \textbf{Numeric Types}
+    \begin{itemize}
+        \item \textbf{Integer Types}
+        \begin{itemize}
+            \item TINYINT
+            \item SMALLINT
+            \item MEDIUMINT
+            \item \textbf{INT}
+            \item BIGINT
+        \end{itemize}
+        \item \textbf{Floating Point Types}
+        \begin{itemize}
+            \item \textbf{FLOAT}
+            \item \textbf{DOUBLE(P, D)}
+            \item \textbf{DECIMAL}
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{String Types}
+    \begin{itemize}
+        \item \textbf{Character Types}
+        \begin{itemize}
+            \item \textbf{CHAR(N)} $\longrightarrow$ \textbf{Fixed Length}
+            \item \textbf{VARCHAR(N)} $\longrightarrow$ \textbf{Variable Length}
+            \item TINYTEXT
+            \item \textbf{TEXT} $\longrightarrow$ for storing large amounts of 
+            text
+            \item MEDIUMTEXT
+            \item LONGTEXT
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Date and Time Types}
+    \begin{itemize}
+        \item \textbf{Date Types}
+        \begin{itemize}
+            \item DATE
+            \item DATETIME
+            \item TIMESTAMP
+            \item TIME
+            \item YEAR
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+\end{document}

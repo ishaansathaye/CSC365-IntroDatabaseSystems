@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage{color,fancyhdr,ifthen,amssymb,amsfonts,amsmath}
+
+\pagestyle{fancy}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\headwidth}{\textwidth}
+\parindent=0in
+
+\newcommand{\headandfoot}[3]{\lhead{#1}\chead{#2}\rhead{\ifthenelse{\isodd{
+    \thepage}}{Ishaan Sathaye
+ {\hspace{.25in}}}{}}}
+
+\headandfoot{Midterm Corrections}{ CSC 365}
+
+\begin{document}
+
+\subsection*{Problem 1 (b)}
+Table R has a primary A and contains 17,000 tuples. Table S has a primary key
+B and an attribute C, which is a foreign key referencing R. Table S contains 
+3,457 tuples. How many tuples will $R\bowtie_{R.A=S.C}S$ contain? \newline
+
+\textbf{Answer:} 3,457 tuples. The join will only contain tuples where the
+value of the A column is equal to the value of the C column in S.
+
+\subsection*{Problem 2 (a)}
+Write SQL commands to create all three tables. (Make sure your SQL commands
+include ALL necessary information.)
+
+\begin{verbatim}
+CREATE TABLE Musicians {
+    Id INT PRIMARY KEY,
+    Name CHAR(20),
+    Country CHAR(20)
+}
+CREATE TABLE CD {
+    Id INT PRIMARY KEY,
+    Musician INT,
+    Title CHAR(20),
+    Year INT,
+    Label CHAR(20),
+    UNIQUE(Musician, Title),
+    FOREIGN KEY(Musician) REFERENCES Musicians(Id)
+}
+CREATE TABLE Songs {
+    CD INT,
+    TrackNo INT,
+    Title CHAR(20),
+    DURATION TIME,
+    PRIMARY KEY(CD, TrackNo),
+    FOREIGN KEY(CD) REFERENCES CD(Id)
+}
+\end{verbatim}
+
+
+\end{document}
