@@ -1,0 +1,169 @@
+\documentclass[9pt]{extarticle}
+
+\usepackage{color,fancyhdr,ifthen,amssymb,amsfonts,amsmath}
+
+\pagestyle{fancy}
+\setlength{\topmargin}{-.8in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\headwidth}{\textwidth}
+\linespread{0}
+\parindent=0in
+
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
+\newcommand{\headandfoot}[3]{\lhead{#1}\chead{#2}\rhead{\ifthenelse{\isodd{
+    \thepage}}{Ishaan Sathaye
+ {\hspace{.25in}}}{}}}
+
+\headandfoot{Final Exam Cheat Sheet}{ CSC 365}
+
+\begin{document}
+
+\subsubsection*{DDL: Commands act upon the schema.}
+\begin{verbatim}
+    CREATE TABLE <table name> (<attribute name> <type> <constraint list>)
+    DROP TABLE <table name>
+    ALTER TABLE <table name> ADD <attribute name> <type> <constraint list>
+    ALTER TABLE <table name> DROP <attribute name>
+\end{verbatim}
+
+\subsubsection*{DML: Commands act upon the data.}
+\begin{verbatim}
+    UPDATE colleges SET abbr = 'COSAM' WHERE abbr = 'COASM'
+    DELETE FROM <table list> WHERE <condition> -- just table name deletes all rows
+    INSERT INTO <table list> VALUES <value list>
+\end{verbatim}
+
+\subsubsection*{Relational Algebra}
+Doing these removes duplicates since these are sets. Try not to look through
+entire table when solving problems.
+\begin{itemize}
+    \item Selection - $\sigma_{\text{C}}(R)$ - returns rows that satisfy C
+    \item Projection - $\pi_{\text{attributes}}(R)$ - returns columns that are
+    in attribute list, no duplicates
+    \item Cartesian Product - $R \times S$ - returns all combinations of rows 
+    (match every row in R with every row in S)
+    \item Rename - $\rho_{\text{new}}(R)$ - used to do self joins, once original 
+    renamed they are forgotten for the duration of the operation
+    \item Duplication Elimination - $\delta(R)$ - removes duplicates, enables us
+    to between set operations and bag operations
+    \item Sort - $\tau_{\text{C}}(R)$ - sorts rows of R based on C, $F=Desc(A 
+    \% B),B,Desc(C)$
+    \item Group By and Aggregate - $\gamma_{\text{L}}(R)$ - groups rows of R, 
+    where L is a list of attributes, and applies aggregate functions to each
+    group, \textbf{Agg. func. show up in other clauses should still be in
+    L b/c projection would remove from final result}
+    \item Outer Joins - $R \leftouterjoin S$ - returns all rows of R and 
+    matching rows of S, \textbf{includes tuples with no match}, same for 
+    right outer join, full outer join is both left and right outer join
+\end{itemize}
+
+\textbf{Joins}
+\begin{itemize}
+    \item Theta Join (Equi-Join) - $R \bowtie_{\text{C}} S$ - returns all 
+    combinations of rows that satisfy C, compare every combination \textbf{Keep
+    columns since there is no projection}, $R \bowtie_{\Theta} S = 
+    \sigma_{\Theta}(R \times S)$
+    \item Natural Join - $R \bowtie S$ - returns all combinations of rows that
+    match on common attributes, \textbf{removes one set of common attributes
+    from the final relation}
+    \item Left/Right Semi Join - $R \ltimes \rtimes S$ - only attributes of one 
+    relation
+    are kept, projection on all elements of one relation
+\end{itemize}
+
+\subsubsection*{Set Operations}
+\textbf{Only apply these when R and S have the same schema.} These are bag
+operations.
+\begin{itemize}
+    \item Union - $R \cup S$ - combine rows of R and S, 
+    \textbf{remove duplicates}
+    \item Set Difference - $R - S$ - keep rows that are unique to R
+    \item Intersection - $R \cap S$ - keep rows that are in both R and S
+\end{itemize}
+
+\subsubsection*{SQL SELECT}
+\begin{verbatim}
+    6 - SELECT, 1 - FROM, 2 - WHERE, 3 - GROUP BY, 4 - HAVING, 5 - ORDER BY
+\end{verbatim}
+\begin{gather*}
+    \sigma_c(R) \rightarrow \text{SELECT * FROM R WHERE condition} \\
+    \pi_L(R) \rightarrow \text{SELECT L FROM R} \\
+    \pi_L(R) \rightarrow \text{SELECT DISTINCT L F FROM R} \\
+    \tau_L(R) \rightarrow \text{SELECT * FROM R ORDER BY L} \\
+    R \times S \rightarrow \text{SELECT * FROM R, S} \\
+    R \bowtie_C S \rightarrow \text{SELECT * FROM R, S WHERE condition} \\
+\end{gather*}
+
+\begin{verbatim}
+    SELECT Name FROM Pokemon WHERE Name LIKE 'B%' ORDER BY Name
+\end{verbatim}
+$\bullet$ "LIKE" is a string operator. \% is a wildcard. \_ is a single character 
+wildcard. Wildcard means any number of characters. \textbf{LIKE is case 
+sensitive}.
+
+$\bullet$ Can use "AS" to rename columns. Can also use in "ORDER BY" to sort by that 
+renamed attribute. It \textbf{cannot be used} in "WHERE" because it is not a 
+real attribute.
+
+\subsubsection*{Group By and Aggregate}
+$\bullet$ If using Group By in SQL, then SELECT clause must contain only: 
+Attributes that are listed in the GROUP BY clause, Aggregate operations on 
+attributes not listed in the GROUP BY clause, COUNT(*)
+
+$\bullet$ Cannot use aggregate functions in WHERE clause. Must use HAVING clause.
+
+\subsubsection*{SQL Joins}
+\begin{verbatim}
+    SELECT * FROM Pokemon p JOIN Attributes a ON p.PokedexId = a.PokedexId
+    -OR- SELECT * FROM Pokemon p, Attributes a USING (PokedexId) (if joining on same attribute)
+\end{verbatim}
+NATURAL JOIN will join on all attributes with the same name:
+\begin{verbatim}
+    SELECT ... FROM <table1> NATURAL JOIN <table2>
+\end{verbatim}
+OUTER JOIN:
+\begin{verbatim}
+    SELECT ... FROM <table1> LEFT/RIGHT [OUTER] JOIN <table2> ON <condition>
+\end{verbatim}
+
+\subsection*{Examples}
+
+IN:
+\begin{verbatim}
+    SELECT Pokemon.Name, weight FROM Attributes, Pokemon WHERE Attributes.PokedexID IN
+        (SELECT PokedexId FROM Species WHERE typeID = (SELECT typeId FROM Types WHERE 
+        type = 'ground')) AND Pokemon.PokedexId = Attributes.PokedexId
+\end{verbatim}
+
+EXISTS:
+\begin{verbatim}
+    SELECT DISTINCT type FROM Stats a WHERE EXISTS (SELECT * FROM Stats b WHERE a.type = 
+    b.type AND weight > 3000)
+\end{verbatim}
+
+GROUP\_CONCAT:
+\begin{verbatim}
+    SELECT grade, GROUP_CONCAT(DISTINCT classroom ORDER BY classroom ASC SEPARATOR ', ') 
+    FROM list GROUP BY grade;
+\end{verbatim}
+
+WITH:
+\begin{verbatim}
+    WITH studentsClassroom AS (SELECT t.classroom, COUNT(l.FirstName) AS numStudents 
+        FROM teachers t, list l WHERE t.classroom = l.classroom GROUP BY t.classroom)
+    SELECT s1.classroom AS c1, s2.classroom AS c2, s1.numStudents
+    FROM studentsClassroom s1, studentsClassroom s2
+    WHERE s1.classroom < s2.classroom AND s1.numStudents = s2.numStudents
+    ORDER BY s1.numStudents;
+\end{verbatim}
+\textbf{Less than sign is used to avoid duplicate pairs.}
+
+\end{document}
