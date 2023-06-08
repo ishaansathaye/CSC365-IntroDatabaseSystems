@@ -799,7 +799,7 @@ Example:
 \end{gather*}
 
 \newpage
-\section{Relational Algebra Operations}
+\section{Relational Algebra Operations and Expression Trees}
 
 \section*{Examples}
 \begin{table}[!htb]
@@ -924,13 +924,13 @@ inner most operation and the outer join would be the topmost operation.
 There can be multiple ways to represent the relational tree, but some trees work
 better as they generate less data.
 
-\Tree[.{$\bowtie$} [.P [.Det \textit{the} ]
-               [.N\1 [.N \textit{package} ]]]
-          [.I\1 [.I \textsc{3sg.Pres} ]
-                [.VP [.V\1 [.V \textit{is} ]
-                           [.AP [.Deg \textit{really} ]
-                                [.A\1 [.A \textit{simple} ]
-                                      \qroof{\textit{to use}}.CP ]]]]]]
+\Tree[.{$\pi_{P.Name, Dosage}$} 
+    [.{$\bowtie_{P.Id=R.Id}$} 
+        [.P ] 
+        [.{$\bowtie_{R.MId=M.Id}$} 
+            [.R ] 
+            [.{$\sigma_{Name=Ibuprofen}$} 
+                [.M ]]]]]
 
 \newpage
 \section{Relational Algebra Continued and SQL Select Statement}
