@@ -100,14 +100,12 @@ with DayRevenue as (
     JOIN goods ON GId = Item
     where SaleDate >= '2007-10-01' and SaleDate <= '2007-10-31'
     group by SaleDate
-),
-GoodsSold as (
+), GoodsSold as (
     SELECT SaleDate,Food,Flavor,Count(*) as Sold from receipts 
     JOIN items ON Receipt = RNumber
     JOIN goods ON GId = Item
     group by Food,Flavor,SaleDate
-),
-GoodsSoldMaxDay as (
+), GoodsSoldMaxDay as (
     SELECT Food,Flavor,Sold from GoodsSold 
     where SaleDate = (
         SELECT SaleDate from DayRevenue

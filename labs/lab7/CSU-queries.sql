@@ -89,7 +89,7 @@ with NoEngineering as (
         select CampusId from discEnr
         where Year = 2004 and Discipline in (
             select Id from disciplines
-            where Name like '%Engineering%'
+            where Name = 'Engineering'
         )
     )
     group by CampusId
