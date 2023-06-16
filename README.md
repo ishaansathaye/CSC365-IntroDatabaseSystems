@@ -21,6 +21,7 @@
 - [Lecture 13 - Additional SQL Syntax: WITH, IF & ELSE, CASE & 
     WHEN](./prof-notes/m-AdditionalSQLSyntax.pdf)
 - [Lecture 14 - JOIN Syntax and Outer Joins](./prof-notes/n-JoinOuterJoin.pdf)
+- [Lecture 15 - Complex SQL Queries](./prof-notes/o-DatabaseViews.pdf)
 
 ## Labs
 
@@ -34,6 +35,7 @@
 - [Lab 5: SQL SELECT and Counting](./labs/lab5/lab5.pdf)
 - [Lab 6: Counting and grouping](./labs/lab6/lab6.pdf)
 - [Lab 7: Complex SQL Queries](./labs/lab7/lab7.pdf)
+- [Lab 8: URBANUNREST DB](./labs/lab8/lab8.pdf)
 
 ## Homework
 - [Homework 1](./homework/hw1/hw1.pdf)
@@ -41,4 +43,7 @@
         - Some solutions may be inaccurate
 
 ## Midterm
-- [Midterm 1 Cheat Sheet](./midterm/midterm1/midterm1_cheat.pdf)
+- [Midterm 1 Cheat Sheet](./exams/midterm/midterm-cheatsheet/midterm_cheatsheet.pdf)
+
+# Final
+- [Final Cheat Sheet](./exams/final/final-cheatsheet/final-cheatsheet.pdf)
