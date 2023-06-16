@@ -45,5 +45,5 @@
 ## Midterm
 - [Midterm 1 Cheat Sheet](./exams/midterm/midterm-cheatsheet/midterm_cheatsheet.pdf)
 
-# Final
+## Final
 - [Final Cheat Sheet](./exams/final/final-cheatsheet/final-cheatsheet.pdf)
